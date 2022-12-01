@@ -4,9 +4,7 @@ import java.util.List;
 import java.util.ArrayList;
 import java.util.Iterator;
 
-import app.Selecao;
 import app.model.*;
-import app.model.Inter_DAO_selecao;
 import app.Exceptions.NumJogException;
 import app.Exceptions.NumSelecException;
 /**

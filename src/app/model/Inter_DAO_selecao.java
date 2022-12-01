@@ -2,7 +2,6 @@ package app.model;
 
 import java.util.*;
 
-import app.Selecao;
 import app.Exceptions.NumJogException;
 import app.Exceptions.NumSelecException;
 

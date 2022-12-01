@@ -3,8 +3,8 @@ package app.controller;
 import java.net.URL;
 import java.util.ResourceBundle;
 
-import app.Jogador;
 import app.Main;
+import app.model.Jogador;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.TextField;

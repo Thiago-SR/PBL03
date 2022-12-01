@@ -1,6 +1,6 @@
 package app.Exceptions;
 
-import app.Selecao;
+import app.model.Selecao;
 
 public class NumJogException extends Exception {
 	Selecao selecao;

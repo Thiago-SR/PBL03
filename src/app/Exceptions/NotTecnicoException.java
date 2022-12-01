@@ -1,6 +1,6 @@
 package app.Exceptions;
 
-import app.Selecao;
+import app.model.Selecao;
 
 public class NotTecnicoException extends Exception{
 	Selecao selecao;

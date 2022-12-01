@@ -2,8 +2,6 @@ package app.model;
 
 import java.util.Map;
 
-import app.Jogador;
-
 public interface Inter_DAO_jogador {
 	
 	public void inserir(Jogador jogador);

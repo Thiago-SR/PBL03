@@ -1,4 +1,4 @@
-package app;
+package app.model;
 
 public class Jogador {
 	private String nome;

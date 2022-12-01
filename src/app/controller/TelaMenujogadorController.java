@@ -8,8 +8,8 @@ import java.util.Map;
 import java.util.ResourceBundle;
 import java.util.Set;
 
-import app.Jogador;
 import app.Main;
+import app.model.Jogador;
 import javafx.beans.Observable;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;

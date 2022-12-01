@@ -5,6 +5,7 @@ import java.net.URL;
 
 import app.model.DAO_jogador;
 import app.model.DAO_selecao;
+import app.model.DAO_tecnico;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -14,6 +15,7 @@ import javafx.stage.Stage;
 public class Main extends Application {
 	public static DAO_jogador list_jog = new DAO_jogador();
 	public static DAO_selecao list_sele = new DAO_selecao();
+	public static DAO_tecnico list_tecnico = new DAO_tecnico();
 
 	@Override
 	public void start(Stage primaryStage) throws Exception {

@@ -6,8 +6,8 @@ import java.util.ArrayList;
 import java.util.ResourceBundle;
 
 import app.Main;
-import app.Selecao;
 import app.Exceptions.NumSelecException;
+import app.model.Selecao;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -51,12 +51,13 @@ public class TelaMenuSelecaoController {
 
 
     @FXML
-    void btnEditar(ActionEvent event) throws IOException {
+    void btnEditar(ActionEvent event) throws IOException, NumSelecException {
     	Selecao sele = TableViewSelecao.getSelectionModel().getSelectedItem();
+    	String nome = sele.getNome();
     	boolean clickconfirmar = showTelaCadastro(sele);
     	if(clickconfirmar) {
-    		Main.list_sele.listar().add(Main.list_sele.listar().indexOf(sele), sele);
-    		SelecaoData.add(SelecaoData, sele);
+    		Main.list_sele.editar(nome, sele.getNome());
+    		TableViewSelecao.refresh();
  
     	}
     }
@@ -66,8 +67,9 @@ public class TelaMenuSelecaoController {
     	Selecao selecao = new Selecao(null);
     	boolean clickconfirmar = showTelaCadastro(selecao);
     	if(clickconfirmar) {
-    		Main.list_sele.inserir(selecao);
     		SelecaoData.add(selecao);
+    		TableViewSelecao.refresh();
+    		
     	}
     }
 
@@ -77,6 +79,7 @@ public class TelaMenuSelecaoController {
     	if(sele != null) {
     		Main.list_sele.remover(sele.getNome());
     		SelecaoData.remove(SelecaoData.indexOf(sele));
+    		
     	}
     }
 
@@ -87,10 +90,6 @@ public class TelaMenuSelecaoController {
 
     @FXML
     void initialize() throws NumSelecException {
-    	Selecao sele = new Selecao("brasil");
-    	Main.list_sele.inserir(sele);
-    	Selecao sele2 = new Selecao("Argentina");
-    	Main.list_sele.inserir(sele2);
     	this.SelecaoData =  FXCollections.observableList(Main.list_sele.listar());
     	this.nomecol.setCellValueFactory(new PropertyValueFactory<Selecao,String>("Nome"));
     	this.TableViewSelecao.setItems(SelecaoData);
@@ -123,6 +122,7 @@ public class TelaMenuSelecaoController {
     
     public void SelecionarItemTableViewSelecao(Selecao selecao) {
     	if(selecao != null) {
+    		System.out.println(Main.list_sele.procurar_selecao(selecao.getNome()));
     		this.lblGrupoSelecao.setText("Fase de grupos nao inicada");
     		this.lblPontosSelecao.setText("");
     		this.lblPosicaoGrupoSelecao.setText("");
