@@ -11,7 +11,7 @@
    <left>
       <VBox prefHeight="200.0" prefWidth="100.0">
          <children>
-            <Button maxHeight="-Infinity" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#menu_jogador" style="-fx-background-color: #498263; -fx-border-color: #88cfa8;" text="Menu Jogador" textFill="#88cfa8">
+            <Button maxHeight="-Infinity" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#menu_jogador" style="-fx-background-color: white; -fx-border-color: #498263;" text="Menu Jogador" textFill="#498263">
                <VBox.margin>
                   <Insets />
                </VBox.margin>
@@ -19,9 +19,9 @@
                   <Insets bottom="20.0" top="20.0" />
                </padding>
                <font>
-                  <Font size="14.0" />
+                  <Font name="System Bold" size="14.0" />
                </font></Button>
-            <Button maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#menu_selecao" style="-fx-background-color: #498263; -fx-border-color: #88cfa8;" text="Menu Selecao" textFill="#88cfa8">
+            <Button maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#menu_selecao" style="-fx-background-color: white; -fx-border-color: #498263;" text="Menu Selecao" textFill="#498263">
                <VBox.margin>
                   <Insets />
                </VBox.margin>
@@ -29,18 +29,24 @@
                   <Insets bottom="20.0" top="20.0" />
                </padding>
                <font>
-                  <Font size="14.0" />
+                  <Font name="System Bold" size="14.0" />
                </font>
             </Button>
-            <Button maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#menu_tecnico" style="-fx-background-color: #498263; -fx-border-color: #88cfa8;" text="Menu Tecnico" textFill="#88cfa8">
+            <Label alignment="CENTER" contentDisplay="CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" onMouseClicked="#menu_tecnico" style="-fx-background-color: white; -fx-border-color: #498263;" text="Menu Tecnico" textFill="#498263">
                <padding>
                   <Insets bottom="20.0" top="20.0" />
                </padding>
-            </Button>
-            <Button maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#menu_arbitro" style="-fx-background-color: #498263; -fx-border-color: #88cfa8;" text="Menu Arbitro" textFill="#88cfa8">
+               <font>
+                  <Font name="System Bold" size="14.0" />
+               </font>
+            </Label>
+            <Button maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#menu_arbitro" style="-fx-background-color: white; -fx-border-color: #498263;" text="Menu Arbitro" textFill="#498263">
                <padding>
                   <Insets bottom="20.0" top="20.0" />
                </padding>
+               <font>
+                  <Font name="System Bold" size="14.0" />
+               </font>
             </Button>
          </children>
       </VBox>

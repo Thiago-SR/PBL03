@@ -8,6 +8,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.control.Button;
 import javafx.scene.control.SplitPane;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.GridPane;
@@ -44,8 +45,10 @@ public class MainWindowController {
    
 
     @FXML
-    void menu_arbitro(ActionEvent event) {
-
+    void menu_arbitro(ActionEvent event) throws IOException {
+    	GridPane d = FXMLLoader.load(getClass().getResource("/app/view/TelaMenuArbitro.fxml"));
+    	
+    	layoutprincipal.setCenter(d);
     }
 
     @FXML
@@ -73,7 +76,7 @@ public class MainWindowController {
     }
 
     @FXML
-    void menu_tecnico(ActionEvent event) throws IOException {
+    void menu_tecnico(MouseEvent event) throws IOException {
     	GridPane c = FXMLLoader.load(getClass().getResource("/app/view/TelaMenuTecnico.fxml"));
     	layoutprincipal.setCenter(c);
     }
