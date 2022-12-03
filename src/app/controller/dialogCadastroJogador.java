@@ -1,12 +1,18 @@
 package app.controller;
 
 import java.net.URL;
+import java.util.*;
+
 import java.util.ResourceBundle;
 
 import app.Main;
 import app.model.Jogador;
+import app.model.Posicao;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.scene.control.ComboBox;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 
@@ -22,7 +28,7 @@ public class dialogCadastroJogador {
     private TextField TextFildNome;
 
     @FXML
-    private TextField TextFildPosicao;
+    private ComboBox<Posicao> cbPosicoes;
 
     @FXML
     private TextField TextFildSelecao;
@@ -30,7 +36,9 @@ public class dialogCadastroJogador {
     private Stage stage;
     private boolean clickconfirmar = false;
     Jogador jogador;
-
+    List<Posicao> Posicoes = new ArrayList<Posicao>();
+    ObservableList<Posicao> obsPosicoes;
+    
     public Stage getStage() {
 		return stage;
 	}
@@ -54,7 +62,7 @@ public class dialogCadastroJogador {
 	public void setJogador(Jogador jogador) {
 		this.jogador = jogador;
 		this.TextFildNome.setText(jogador.getNome());
-		this.TextFildPosicao.setText(jogador.getPosicao());
+		//this.TextFildPosicao.setText(jogador.getPosicao());
 	}
 
 	@FXML
@@ -65,11 +73,11 @@ public class dialogCadastroJogador {
     @FXML
     void btnconfirmar(ActionEvent event) {
     	String nome = this.TextFildNome.getText();
-    	String posicao = this.TextFildPosicao.getText();
+    	//String posicao = this.TextFildPosicao.getText();
     	String selecao = this.TextFildSelecao.getText();
     	this.jogador.setCod(10);
     	this.jogador.setNome(nome);
-    	this.jogador.setPosicao(posicao);
+    	//this.jogador.setPosicao(posicao);
     	this.clickconfirmar =true;
     	this.stage.close();
 
@@ -77,7 +85,25 @@ public class dialogCadastroJogador {
 
     @FXML
     void initialize() {
-        
+        carregarPosicoes();
+    }
+    
+    public void carregarPosicoes() {
+    	Posicao posi1 = new Posicao("Goleiro");
+    	Posicao posi2 = new Posicao("Atacante");
+    	Posicao posi3 = new Posicao("Lateral");
+    	Posicao posi4 = new Posicao("Meio Campo");
+    	Posicao posi5 = new Posicao("Zagueiro");
+    	
+    	this.Posicoes.add(posi1);
+    	this.Posicoes.add(posi2);
+    	this.Posicoes.add(posi3);
+    	this.Posicoes.add(posi4);
+    	this.Posicoes.add(posi5);
+    	
+    	obsPosicoes = FXCollections.observableList(Posicoes);
+    	cbPosicoes.setItems(obsPosicoes);
+    	
     }
 
 }

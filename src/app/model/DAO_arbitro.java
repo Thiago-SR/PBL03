@@ -36,7 +36,7 @@ public class DAO_arbitro implements Inter_DAO_arbitro {
 		Iterator<Arbitro> itr = Arbitros.iterator();
 		while (itr.hasNext()) {
 			Arbitro arbitro = itr.next();
-			if (nome.equals(arbitro.getName()) == true ) {
+			if (nome.equals(arbitro.getNome()) == true ) {
 				Arbitros.remove(arbitro);
 				break;
 			}
@@ -65,8 +65,8 @@ public class DAO_arbitro implements Inter_DAO_arbitro {
 		Iterator<Arbitro> itr = Arbitros.iterator();
 		while (itr.hasNext()) {
 			Arbitro arbitro = itr.next();
-			if (nome.equals(arbitro.getName()) == true) {
-				arbitro.setName(novo_nome);
+			if (nome.equals(arbitro.getNome()) == true) {
+				arbitro.setNome(novo_nome);
 			}
 		}
 
