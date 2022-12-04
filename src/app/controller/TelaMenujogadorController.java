@@ -10,6 +10,7 @@ import java.util.Set;
 
 import app.Main;
 import app.model.Jogador;
+import app.model.Selecao;
 import javafx.beans.Observable;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -54,9 +55,6 @@ public class TelaMenujogadorController {
 
     @FXML
     void initialize() {
-    	Jogador jog1 = new Jogador("thiago",1,"Atacante");
-    	jog1.setGols(4);
-    	Main.list_jog.inserir(jog1);
     	this.JogadorData = FXCollections.observableArrayList(  Main.list_jog.listar().values());      
         this.nomecol.setCellValueFactory(new PropertyValueFactory<Jogador,String>("Nome"));
         this.codcol.setCellValueFactory(new PropertyValueFactory<Jogador,Integer>("cod"));
@@ -70,10 +68,9 @@ public class TelaMenujogadorController {
     
     public void selecionarItemTableViewJogador(Jogador jogador) {
     	if(jogador != null) {
-	    	this.labelJogadorSelecao.setText("Falta implementar");
+	    	this.labelJogadorSelecao.setText(jogador.getSelecao().getNome());
 	    	this.labelJogadorPosicao.setText(jogador.getPosicao());
 	    	this.labeljogadorGols.setText(String.valueOf(jogador.getNumGols()));
-	    	System.out.println(jogador.getNome());
     	}
     
     }
@@ -81,23 +78,28 @@ public class TelaMenujogadorController {
     @FXML
     void btnEditar(ActionEvent event) throws IOException {
     	Jogador jog  = TableViewJogadores.getSelectionModel().getSelectedItem();
+    	Selecao selecao_antiga = jog.getSelecao();
     	if(jog != null) {
     		boolean clickconfirmar = showTelaCadastro(jog);
         	if(clickconfirmar) {
         		Main.list_jog.editar(jog);
         		JogadorData.remove(JogadorData.indexOf(jog));
         		JogadorData.add(jog);
+        		if(selecao_antiga.equals(jog.getSelecao()) == false) {
+        			Main.list_sele.remover_jogador(selecao_antiga.getNome(), jog);
+        		}
         	}
     	}
     }
 
     @FXML
     void btnInserir(ActionEvent event) throws IOException {
-    	Jogador jog = new Jogador(null,0,null);
+    	Jogador jog = new Jogador(null,0,null,null);
     	boolean clickconfirmar = showTelaCadastro(jog);
     	if(clickconfirmar) {
     		Main.list_jog.inserir(jog);
     		JogadorData.add(jog);
+    		
     	}
     }
 
@@ -105,11 +107,10 @@ public class TelaMenujogadorController {
     void btnRemover(ActionEvent event) {
     	Jogador jog  = TableViewJogadores.getSelectionModel().getSelectedItem();
     	if(jog != null) {
+    		Main.list_sele.remover_jogador(jog.getSelecao().getNome(), jog);
     		Main.list_jog.remover(jog.getCod());
     		JogadorData.remove(JogadorData.indexOf(jog));
-
     	}
-    	
     }
     
     public boolean showTelaCadastro(Jogador jog) throws IOException{

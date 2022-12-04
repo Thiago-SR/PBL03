@@ -122,7 +122,6 @@ public class TelaMenuSelecaoController {
     
     public void SelecionarItemTableViewSelecao(Selecao selecao) {
     	if(selecao != null) {
-    		System.out.println(Main.list_sele.procurar_selecao(selecao.getNome()));
     		this.lblGrupoSelecao.setText("Fase de grupos nao inicada");
     		this.lblPontosSelecao.setText("");
     		this.lblPosicaoGrupoSelecao.setText("");

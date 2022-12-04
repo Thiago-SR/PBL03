@@ -5,8 +5,8 @@ import java.util.List;
 
 public class Selecao {
 	private String nome;
-	private int tecnico;
-	private List<Integer> jogadores = new ArrayList<Integer>();
+	private Tecnico tecnico;
+	private List<Jogador> jogadores = new ArrayList<Jogador>();
 
 	public Selecao(String nome) {
 		this.nome = nome;
@@ -16,7 +16,7 @@ public class Selecao {
 		return nome;
 	}
 
-	public int getTecnico() {
+	public Tecnico getTecnico() {
 		return tecnico;
 	}
 
@@ -24,15 +24,15 @@ public class Selecao {
 		nome = novo_nome;
 	}
 
-	public void setTecnico(int novo_tecnico) {
+	public void setTecnico(Tecnico novo_tecnico) {
 		tecnico = novo_tecnico;
 	}
 
-	public List<Integer> getJogadores() {
+	public List<Jogador> getJogadores() {
 		return jogadores;
 	}
 
-	public void setJogadores(List<Integer> jogadores) {
+	public void setJogadores(List<Jogador> jogadores) {
 		this.jogadores = jogadores;
 	}
 

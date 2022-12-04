@@ -92,15 +92,15 @@ public class DAO_selecao implements Inter_DAO_selecao {
 	 *
 	 */
 	@Override
-	public void inserir_jogador(String nome_selecao, int id_jog) throws NumJogException {
-		List<Integer> lista_jogadores = new ArrayList<Integer>();
+	public void inserir_jogador(String nome_selecao, Jogador jog) throws NumJogException {
+		List<Jogador> lista_jogadores = new ArrayList<Jogador>();
 		Iterator<Selecao> itr = Selecoes.iterator();
 		while (itr.hasNext()) {
 			Selecao selecao = itr.next();
 			if (nome_selecao.equals(selecao.getNome()) == true) {
 				lista_jogadores = selecao.getJogadores();
 				if(lista_jogadores.size() < 11) {
-					lista_jogadores.add(id_jog);
+					lista_jogadores.add(jog);
 					selecao.setJogadores(lista_jogadores);
 					break;
 				}
@@ -118,14 +118,14 @@ public class DAO_selecao implements Inter_DAO_selecao {
 	 * 
 	 */
 	@Override
-	public void remover_jogador(String nome_selecao, int id_jog) {
-		List<Integer> lista_jogadores = new ArrayList<Integer>();
+	public void remover_jogador(String nome_selecao, Jogador jog) {
+		List<Jogador> lista_jogadores = new ArrayList<Jogador>();
 		Iterator<Selecao> itr = Selecoes.iterator();
 		while (itr.hasNext()) {
 			Selecao selecao = itr.next();
 			if (nome_selecao.equals(selecao.getNome()) == true) {
 				lista_jogadores = selecao.getJogadores();
-				int index = lista_jogadores.indexOf(id_jog);
+				int index = lista_jogadores.indexOf(jog);
 				lista_jogadores.remove(index);
 				selecao.setJogadores(lista_jogadores);
 				break;
@@ -141,12 +141,12 @@ public class DAO_selecao implements Inter_DAO_selecao {
 	 * 
 	 */
 	@Override
-	public void inserir_tecnico(String nome_selecao, int cod_tecnico) {
+	public void inserir_tecnico(String nome_selecao, Tecnico tecnico) {
 		Iterator<Selecao> itr = Selecoes.iterator();
 		while (itr.hasNext()) {
 			Selecao selecao = itr.next();
 			if (nome_selecao.equals(selecao.getNome()) == true) {
-				selecao.setTecnico(cod_tecnico);
+				selecao.setTecnico(tecnico);
 				break;
 			}
 		}
@@ -157,12 +157,12 @@ public class DAO_selecao implements Inter_DAO_selecao {
 	 * 
 	 */
 	@Override
-	public void remove_tecnico(int cod) {
+	public void remove_tecnico(Tecnico tecnico) {
 		Iterator<Selecao> itr = Selecoes.iterator();
 		while (itr.hasNext()) {
 			Selecao selecao = itr.next();
-			if (selecao.getTecnico() == cod) {
-				selecao.setTecnico(0);
+			if (selecao.getTecnico() == tecnico) {
+				selecao.setTecnico(null);
 				break;
 			}
 		}
@@ -175,12 +175,14 @@ public class DAO_selecao implements Inter_DAO_selecao {
 	 */
 	@Override
 	public Selecao procurar_selecao(String nome) {
-		Iterator<Selecao> itr = Selecoes.iterator();
-		while (itr.hasNext()) {
-			Selecao selecao = itr.next();
-			
-			if (nome.equals(selecao.getNome())== true) {
-				return selecao;
+		if(Selecoes.size() >0) {
+			Iterator<Selecao> itr = Selecoes.iterator();
+			while (itr.hasNext()) {
+				Selecao selecao = itr.next();
+				if(selecao!=null) {
+					if (nome.equals(selecao.getNome())== true) 
+						return selecao;
+				}
 			}
 		}
 		// TODO Auto-generated method stub
@@ -192,20 +194,18 @@ public class DAO_selecao implements Inter_DAO_selecao {
 	 * 
 	 *@return Nome da selecao - Retorna o nome da selecao caso o jogador faca parte de uma selecao ou null caso o jogador nao faca parte de uma selecao.
 	 */
-	public String selecao_do_jogador(int cod) {
+	public String selecao_do_jogador(Jogador jogador) {
 		Iterator<Selecao> itr = Selecoes.iterator();
 		while (itr.hasNext()) {
 			Selecao selecao = itr.next();
-			Iterator<Integer> itr1 = selecao.getJogadores().iterator();
+			if(selecao.getJogadores().contains(jogador))
+				return selecao.getNome();
+			/*Iterator<Jogador> itr1 = selecao.getJogadores().iterator();
 			while(itr1.hasNext()) {
 				int cod_jog = itr1.next();
-				if(cod == cod_jog) {
-					return selecao.getNome();
+				if(jogador == cod_jog) {
+					return selecao.getNome();*/
 				}
-			}
-			
-		
-		}
 		return null;
 	}
 	/**
@@ -214,11 +214,11 @@ public class DAO_selecao implements Inter_DAO_selecao {
 	 *
 	 *@return Nome da selecao- Retorna o nome da selecao que  o tecnico faz parte.
 	 */
-	public String selecao_do_tecnico(int cod){
+	public String selecao_do_tecnico(Tecnico tecnico){
 		Iterator<Selecao> itr = Selecoes.iterator();
 		while(itr.hasNext()) {
 			Selecao selecao = itr.next();
-			if(cod == selecao.getTecnico()) {
+			if(tecnico == selecao.getTecnico()) {
 				return selecao.getNome();
 			}
 		}

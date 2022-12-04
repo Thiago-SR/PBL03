@@ -59,18 +59,12 @@ public class dialogCadastroArbitroController {
 
     @FXML
     void lblConfirmar(MouseEvent event) {
-    	if(this.TextFildNome.getText() != null) {
-    		if(this.TextFildNome.getText().equals("thiago") != true) {
-		    	String nome = this.TextFildNome.getText();
-		    	this.arbitro.setNome(nome);
-		    	this.clickConfirmar = true;
-		    	this.stage.close();
-    		}else {
-    			lblErro.setText("Nome incorreto");
-    			lblErro.setVisible(true);;
-    		}
+    	String nome = this.TextFildNome.getText();
+    	this.arbitro.setNome(nome);
+    	this.clickConfirmar = true;
+    	this.stage.close();
+
     	}
-    }
 
 
     @FXML

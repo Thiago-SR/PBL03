@@ -80,6 +80,12 @@ public class MainWindowController {
     	GridPane c = FXMLLoader.load(getClass().getResource("/app/view/TelaMenuTecnico.fxml"));
     	layoutprincipal.setCenter(c);
     }
+    
+    @FXML
+    void search(ActionEvent event) {
+        //GridPane E = FXMLLoader.load(getClass().getResource("/app/view/TelaMenuTecnico.fxml"));
+    	//layoutprincipal.setCenter(E);
+    }
 
     @FXML
     void initialize() {

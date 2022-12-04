@@ -35,7 +35,7 @@
                <children>
                   <Group HBox.hgrow="SOMETIMES">
                      <children>
-                        <Label onMouseClicked="#lblInserir" style="-fx-border-color: #498263; -fx-border-radius: 15; -fx-background-color: white; -fx-border-insets: -2.5; -fx-background-radius: 15;" text="Inserir" textFill="#498263">
+                        <Label onMouseClicked="#lblInserir" style="-fx-border-color: #498263; -fx-border-radius: 15; -fx-background-color: white; -fx-background-radius: 15;" text="Inserir" textFill="#498263">
                            <padding>
                               <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
                            </padding>

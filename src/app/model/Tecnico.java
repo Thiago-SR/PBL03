@@ -13,9 +13,10 @@ public class Tecnico {
 		this.selecao = selecao;
 	}
 
-	public Tecnico(String nome_tec, int codTecnico) {
+	public Tecnico(String nome_tec, int codTecnico, String selecao) {
 		this.nome = nome_tec;
 		this.codTecnico = codTecnico;
+		this.selecao = selecao;
 
 	}
 

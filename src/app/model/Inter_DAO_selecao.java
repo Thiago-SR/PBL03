@@ -15,13 +15,13 @@ public interface Inter_DAO_selecao {
 		
 	public List<Selecao> listar();
 	
-	public void inserir_jogador(String nome_selecao, int id_jog)throws NumJogException ;
+	public void inserir_jogador(String nome_selecao, Jogador jog)throws NumJogException ;
 	
-	public void remover_jogador(String nome_selecao, int id_jog);
+	public void remover_jogador(String nome_selecao, Jogador jog);
 	
-	public void inserir_tecnico(String nome_selecao, int cod_tecnico);
+	public void inserir_tecnico(String nome_selecao, Tecnico tecnico);
 	
-	public void remove_tecnico(int cod);
+	public void remove_tecnico(Tecnico tecnico);
 	
 	public Selecao procurar_selecao(String nome);
 

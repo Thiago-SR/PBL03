@@ -7,14 +7,16 @@ public class Jogador {
 	private int cardAmarelo;
 	private int cardVermelho;
 	private int numGols;
+	private Selecao Selecao;
 
-	public Jogador(String nome_jog, int cod, String posicao_jog) {
+	public Jogador(String nome_jog, int cod, String posicao_jog,Selecao selecao) {
 		nome = nome_jog;
 		codJogador = cod;
 		posicao = posicao_jog;
 		this.cardAmarelo = 0;
 		this.cardVermelho = 0;
 		this.numGols = 0;
+		this.Selecao = selecao;
 
 	} 
 
@@ -69,5 +71,12 @@ public class Jogador {
 
 	public void setGols(int novo_gols) {
 		numGols = novo_gols;
+	}
+	public Selecao getSelecao() {
+		return Selecao;
+	}
+
+	public void setSelecao(Selecao selecao) {
+		Selecao = selecao;
 	}
 }

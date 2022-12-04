@@ -6,6 +6,7 @@ import java.net.URL;
 import app.model.DAO_jogador;
 import app.model.DAO_selecao;
 import app.model.DAO_tecnico;
+import app.model.Preencher;
 import app.model.DAO_arbitro;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
@@ -18,11 +19,16 @@ public class Main extends Application {
 	public static DAO_selecao list_sele = new DAO_selecao();
 	public static DAO_tecnico list_tecnico = new DAO_tecnico();
 	public static DAO_arbitro list_arbitro = new DAO_arbitro();
-	static int contador_jogador = 1000;
-	static int contador_tecnico = 100;
-	static int contador_arbitro = 10;
+	public static int contador_jogador = 1000;
+	public static int contador_tecnico = 100;
+	public static int contador_arbitro = 10;
 	@Override
 	public void start(Stage primaryStage) throws Exception {
+		Preencher p = new Preencher();
+		p.MockSelecoes(list_sele);
+		p.MockTecnicos(list_sele);
+		p.MockJogadores(list_sele);
+		
 		FXMLLoader loader = new FXMLLoader();
 		URL xmlURL = getClass().getResource("view/MainWindow.fxml");
 		loader.setLocation(xmlURL);

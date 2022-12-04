@@ -60,7 +60,7 @@ public class TelaMenuArbitroController {
     	Arbitro arbitro = new Arbitro(null,0);
     	boolean clickconfirmar= showTelaCadastro(arbitro);
     	if(clickconfirmar) {
-    		//Main.list_arbitro.inserir(arbitro);
+    		Main.list_arbitro.inserir(arbitro);
     		this.ArbitroData.add(arbitro);
     		this.TableViewArbitro.refresh();
     	}

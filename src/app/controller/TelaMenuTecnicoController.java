@@ -5,6 +5,7 @@ import java.net.URL;
 import java.util.ResourceBundle;
 
 import app.Main;
+import app.model.Selecao;
 import app.model.Tecnico;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -44,17 +45,26 @@ public class TelaMenuTecnicoController {
     @FXML
     void btnEditar(ActionEvent event) throws IOException {
     	Tecnico tecnico = TableViewTecnico.getSelectionModel().getSelectedItem();
-    	String nome = tecnico.getNome();
-    	boolean clickconfirmar = showTelaCadastro(tecnico);
-    	if(clickconfirmar) {
-    		Main.list_tecnico.editar(nome, tecnico.getNome());
-    		TableViewTecnico.refresh();
+    	if(tecnico != null) {
+	    	String selecao_antiga = tecnico.getSelecao();
+	    	String nome = tecnico.getNome();
+	    	boolean clickconfirmar = showTelaCadastro(tecnico);
+	    	if(clickconfirmar) {
+	    		Main.list_tecnico.editar(nome, tecnico.getNome());
+	    		TecnicoData.remove(TecnicoData.indexOf(tecnico));
+	    		TecnicoData.add(tecnico);
+	    		if(selecao_antiga.equals(tecnico.getSelecao()) == false)
+	                Main.list_sele.remove_tecnico(tecnico);
+	    		TableViewTecnico.refresh();
+	    	}
     	}
-    }
+	    }
+    
+   
 
     @FXML
     void btnInserir(ActionEvent event) throws IOException {
-    	Tecnico tecnico = new Tecnico(null, 0);
+    	Tecnico tecnico = new Tecnico(null, 0, null);
     	boolean clickconfirmar = showTelaCadastro(tecnico);
     	if(clickconfirmar) {
     		TecnicoData.add(tecnico);

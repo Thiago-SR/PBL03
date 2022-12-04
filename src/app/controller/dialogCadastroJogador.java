@@ -6,13 +6,16 @@ import java.util.*;
 import java.util.ResourceBundle;
 
 import app.Main;
+import app.Exceptions.NumJogException;
 import app.model.Jogador;
 import app.model.Posicao;
+import app.model.Selecao;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.ComboBox;
+import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 
@@ -32,6 +35,9 @@ public class dialogCadastroJogador {
 
     @FXML
     private TextField TextFildSelecao;
+    
+    @FXML
+    private Label lblErroSelecao;
     
     private Stage stage;
     private boolean clickconfirmar = false;
@@ -72,16 +78,52 @@ public class dialogCadastroJogador {
 
     @FXML
     void btnconfirmar(ActionEvent event) {
-    	String nome = this.TextFildNome.getText();
+    	try {
+    		Selecao verifica_sele = Main.list_sele.procurar_selecao(TextFildSelecao.getText());
+    		
+    		if(verifica_sele == null) {
+    			throw new RuntimeException();
+    		}
+    		else {
+    			String nome = TextFildNome.getText();
+    			Posicao posicao = cbPosicoes.getSelectionModel().getSelectedItem();
+    			this.jogador.setNome(nome);
+    			this.jogador.setPosicao(posicao.getNome());
+    			if(this.jogador.getSelecao()!= null) {
+	    			if(this.jogador.getSelecao().equals(verifica_sele)== false) {
+	    				Main.list_sele.inserir_jogador(verifica_sele.getNome(), jogador);
+	    			}
+    			}
+    			else {
+    				Main.list_sele.inserir_jogador(verifica_sele.getNome(), jogador);
+    			}
+    			jogador.setSelecao(verifica_sele);
+    			this.jogador.setCod(Main.contador_jogador);
+    			Main.contador_jogador++;
+    			this.clickconfirmar = true;
+    			this.stage.close();
+    		}
+    	}
+    	catch(RuntimeException e) {
+    		lblErroSelecao.setText("Selecao nao encontrada!");
+    		lblErroSelecao.setVisible(true);
+    	}
+    	catch(NumJogException a) {
+    		lblErroSelecao.setText("Selecao atingiu o limite de jogadores!");
+    		lblErroSelecao.setVisible(true);
+    	}
+    	
+    	
+    	//String nome = this.TextFildNome.getText();
     	//String posicao = this.TextFildPosicao.getText();
-    	String selecao = this.TextFildSelecao.getText();
-    	this.jogador.setCod(10);
-    	this.jogador.setNome(nome);
+    	//String selecao = this.TextFildSelecao.getText();
+    	//this.jogador.setCod(10);
+    	//this.jogador.setNome(nome);
     	//this.jogador.setPosicao(posicao);
-    	this.clickconfirmar =true;
-    	this.stage.close();
-
+    	//this.clickconfirmar =true;
+    	//this.stage.close();
     }
+    
 
     @FXML
     void initialize() {
