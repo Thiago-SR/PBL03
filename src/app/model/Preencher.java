@@ -18,7 +18,7 @@ import app.model.Tecnico;
  */
 public class Preencher {
 	public static void MockSelecoes(DAO_selecao selecDao) {
-			String[] nomes = {"Catar", "Argentina", "Brasil", "Inglaterra", "França", "Espanha", "Bélgica", "Portugal", "Alemanha", "Holanda", "Uruguai", "Croácia", "Dinamarca", "México", "EUA", "Senegal", "PaísdeGales" , "Polônia", "Austrália", "Japão", "Marrocos", "Suíça", "Gana", "Coreia", "Camarões", "Sérvia", "Canadá", "CostaRica", "Tunísia", "ArábiaSaudita", "Irã", "Equador"};
+			String[] nomes = {"Catar", "Argentina", "Brasil", "Inglaterra", "França", "Espanha", "Bélgica", "Portugal", "Alemanha", "Holanda", "Uruguai", "Croácia", "Dinamarca", "México", "EUA", "Senegal", "País de Gales" , "Polônia", "Austrália", "Japão", "Marrocos", "Suíça", "Gana", "Coreia", "Camarões", "Sérvia", "Canadá", "Costa Rica", "Tunísia", "Arábia Saudita", "Irã", "Equador"};
 			for (int i = 0;i<32;i++) {
 				try {
 					Selecao selec = new Selecao(nomes[i]);
