@@ -293,11 +293,31 @@ public class dialogPegarDadosPartidaController {
 		int cod_arbitro = arbitro.getCodigo();
 		
 		if(somatorio_gol_selecao01 == gols_time01 && somatorio_gol_selecao02 == gols_time02) {
+			
+			Jogador jogGol1 = this.cbGolJogadorSelecao01.getValue();
+			jogGol1.setGols(Integer.parseInt(this.GolsJogadorSelecao01.getText()));
+			Jogador jogGol2 = this.cbGolJogadorSelecao02.getValue();
+			jogGol2.setGols(Integer.parseInt(this.GolsJogadorSelecao02.getText()));
+			Jogador jogCard1 = this.cbCardJogSelecao01.getValue();
+			if(this.cbCardColorSelecao01.getValue() != null) {
+				if(this.cbCardColorSelecao01.getValue().getTipo().equals("Amarelo")==true){
+					jogCard1.setCardAmarelo(Integer.parseInt(this.CadJogadorSelecao01.getText()));
+				}
+				else{	
+					jogCard1.setCardVermelho(Integer.parseInt(this.CadJogadorSelecao01.getText()));
+				}
+			}
+			Jogador jogCard2 = this.cbCardJogSelecao02.getValue();
+			if(this.cbCardColorSelecao02.getValue() != null) {
+				if(this.cbCardColorSelecao02.getValue().getTipo().equals("Amarelo")==true){
+					jogCard2.setCardAmarelo(Integer.parseInt(this.CadJogadorSelecao02.getText()));
+				}
+				else{	
+					jogCard2.setCardVermelho(Integer.parseInt(this.CadJogadorSelecao02.getText()));
+				}
+			}
 			partida.inserir_dados(cod_arbitro, local, day, hora, gols_time01, gols_time02);
-
 		}
-		
-		
 	}
 
 	@FXML
