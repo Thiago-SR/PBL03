@@ -2,68 +2,103 @@
 
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
-<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<BorderPane fx:id="layoutprincipal" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="app.controller.MainWindowController">
+<BorderPane fx:id="layoutprincipal" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="520.0" prefWidth="930.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="app.controller.MainWindowController">
    <left>
-      <VBox prefHeight="200.0" prefWidth="100.0">
+      <VBox prefHeight="520.0" prefWidth="119.0" style="-fx-background-color: #450518;" BorderPane.alignment="BOTTOM_CENTER">
          <children>
-            <Button maxHeight="-Infinity" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#menu_jogador" style="-fx-background-color: white; -fx-border-color: #498263;" text="Menu Jogador" textFill="#498263">
-               <VBox.margin>
-                  <Insets />
-               </VBox.margin>
-               <padding>
-                  <Insets bottom="20.0" top="20.0" />
-               </padding>
+            <Button maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#menu_selecao" style="-fx-background-color: transparent;" text="Menu Seleção" textFill="WHITE">
                <font>
                   <Font name="System Bold" size="14.0" />
-               </font></Button>
-            <Button maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#menu_selecao" style="-fx-background-color: white; -fx-border-color: #498263;" text="Menu Selecao" textFill="#498263">
-               <VBox.margin>
-                  <Insets />
-               </VBox.margin>
+               </font>
                <padding>
-                  <Insets bottom="20.0" top="20.0" />
+                  <Insets bottom="10.0" top="10.0" />
+               </padding>
+            </Button>
+            <Button fx:id="btnJogador" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#menu_jogador" style="-fx-background-color: transparent;" text="Menu Jogador" textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="14.0" />
+               </font>
+               <padding>
+                  <Insets bottom="10.0" top="10.0" />
+               </padding>
+            </Button>
+            <Button fx:id="btnTecnico" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#menu_tecnico" style="-fx-background-color: transparent;" text="Menu Técnico" textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="14.0" />
+               </font>
+               <padding>
+                  <Insets bottom="10.0" top="10.0" />
+               </padding>
+            </Button>
+            <Button fx:id="btnArbitro" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#menu_arbitro" style="-fx-background-color: transparent;" text="Menu Árbitro" textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="14.0" />
+               </font>
+               <padding>
+                  <Insets bottom="10.0" top="10.0" />
+               </padding>
+            </Button>
+            <Button fx:id="btnPesquisar" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" style="-fx-background-color: transparent;" text="Pesquisar" textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="14.0" />
+               </font>
+               <padding>
+                  <Insets bottom="10.0" top="10.0" />
+               </padding>
+            </Button>
+            <Button fx:id="btnGrupos" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#menu_grupos" style="-fx-background-color: transparent;" text="Fase de Grupos" textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="14.0" />
+               </font>
+               <padding>
+                  <Insets bottom="10.0" top="10.0" />
+               </padding>
+            </Button>
+            <Button fx:id="btnPartidas" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#menu_partidas" style="-fx-background-color: transparent;" text="Partidas" textFill="WHITE">
+               <padding>
+                  <Insets bottom="10.0" top="10.0" />
                </padding>
                <font>
                   <Font name="System Bold" size="14.0" />
                </font>
             </Button>
-            <Label alignment="CENTER" contentDisplay="CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" onMouseClicked="#menu_tecnico" style="-fx-background-color: white; -fx-border-color: #498263;" text="Menu Tecnico" textFill="#498263">
-               <padding>
-                  <Insets bottom="20.0" top="20.0" />
-               </padding>
+            <Button fx:id="btnEliminatorias" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" style="-fx-background-color: transparent;" text="Eliminatórias" textFill="WHITE">
                <font>
                   <Font name="System Bold" size="14.0" />
                </font>
-            </Label>
-            <Button maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#menu_arbitro" style="-fx-background-color: white; -fx-border-color: #498263;" text="Menu Arbitro" textFill="#498263">
                <padding>
-                  <Insets bottom="20.0" top="20.0" />
+                  <Insets bottom="10.0" top="10.0" />
                </padding>
-               <font>
-                  <Font name="System Bold" size="14.0" />
-               </font>
             </Button>
-            <Button maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#search" style="-fx-background-color: white; -fx-border-color: #498263;" text="Pesquisar" textFill="#498263">
+            <Button fx:id="btnPreencher" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" style="-fx-background-color: transparent;" text="Auto Preencher" textFill="WHITE">
+               <padding>
+                  <Insets bottom="10.0" top="10.0" />
+               </padding>
                <font>
                   <Font name="System Bold" size="14.0" />
                </font>
-               <padding>
-                  <Insets bottom="20.0" top="20.0" />
-               </padding>
             </Button>
          </children>
+         <BorderPane.margin>
+            <Insets />
+         </BorderPane.margin>
       </VBox>
    </left>
+   <center>
+      <ImageView fitHeight="483.0" fitWidth="817.0" pickOnBounds="true" preserveRatio="true" BorderPane.alignment="CENTER">
+         <image>
+            <Image url="@imagem/Mundial-Qatar-2022-donde-ver-los-partidos-de-futbol-en-internet.jpg" />
+         </image>
+      </ImageView>
+   </center>
    <top>
-      <Label alignment="CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" style="-fx-background-color: #498263;" text="SYSCOPA" textFill="#88cfa8" BorderPane.alignment="CENTER">
-         <font>
-            <Font name="System Bold" size="20.0" />
-         </font>
-      </Label>
+      <AnchorPane prefHeight="68.0" prefWidth="930.0" style="-fx-background-color: #450518;" BorderPane.alignment="CENTER" />
    </top>
 </BorderPane>

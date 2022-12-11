@@ -3,10 +3,12 @@ package app.controller;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
+import java.util.List;
 import java.util.ResourceBundle;
 
 import app.Main;
 import app.Exceptions.NumSelecException;
+import app.model.Jogador;
 import app.model.Selecao;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -53,12 +55,14 @@ public class TelaMenuSelecaoController {
     @FXML
     void btnEditar(ActionEvent event) throws IOException, NumSelecException {
     	Selecao sele = TableViewSelecao.getSelectionModel().getSelectedItem();
-    	String nome = sele.getNome();
-    	boolean clickconfirmar = showTelaCadastro(sele);
-    	if(clickconfirmar) {
-    		Main.list_sele.editar(nome, sele.getNome());
-    		TableViewSelecao.refresh();
- 
+    	if(sele != null) {
+	    	String nome = sele.getNome();
+	    	boolean clickconfirmar = showTelaCadastro(sele);
+	    	if(clickconfirmar) {
+	    		Main.list_sele.editar(nome, sele.getNome());
+	    		TableViewSelecao.refresh();
+	 
+	    	}
     	}
     }
 
@@ -77,9 +81,13 @@ public class TelaMenuSelecaoController {
     void btnRemover(ActionEvent event) {
     	Selecao sele = TableViewSelecao.getSelectionModel().getSelectedItem();
     	if(sele != null) {
+    		List<Jogador> lista_jog = sele.getJogadores();
+    		for(Jogador i: lista_jog) {
+                Main.list_jog.remover(i.getCod());
+            }
     		Main.list_sele.remover(sele.getNome());
-    		SelecaoData.remove(SelecaoData.indexOf(sele));
-    		
+    		//SelecaoData.remove(SelecaoData.indexOf(sele));
+    		TableViewSelecao.refresh();
     	}
     }
 
@@ -112,7 +120,6 @@ public class TelaMenuSelecaoController {
     	dialogCadastroSelecaoController controller = loader.getController();
     	controller.setStage(dialogStage);
     	controller.setSelecao(selecao);
-    	
     	//Mostra o dialog e espera o usuario fechar
     	dialogStage.showAndWait();
     	

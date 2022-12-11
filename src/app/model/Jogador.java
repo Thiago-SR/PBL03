@@ -19,7 +19,7 @@ public class Jogador {
 		this.Selecao = selecao;
 
 	} 
-
+	@Override
 	public String toString() {
 		return this.nome;
 	}

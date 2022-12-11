@@ -14,7 +14,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="156.0" prefWidth="463.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="app.controller.dialogCadastroJogador">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="156.0" prefWidth="463.0" style="-fx-background-color: c50d43;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="app.controller.dialogCadastroJogador">
    <children>
       <GridPane layoutX="65.0" layoutY="14.0" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="220.0" prefWidth="362.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
         <columnConstraints>
@@ -28,10 +28,13 @@
                <children>
                   <HBox>
                      <children>
-                        <Label text="nome">
+                        <Label text="Nome" textFill="WHITE">
                            <HBox.margin>
                               <Insets left="10.0" />
                            </HBox.margin>
+                           <font>
+                              <Font name="System Bold" size="15.0" />
+                           </font>
                         </Label>
                         <TextField fx:id="TextFildNome" prefHeight="25.0" prefWidth="149.0">
                            <HBox.margin>
@@ -45,12 +48,15 @@
                   </HBox>
                   <HBox>
                      <children>
-                        <Label text="Posicao">
+                        <Label text="Posição" textFill="WHITE">
                            <HBox.margin>
                               <Insets left="10.0" />
                            </HBox.margin>
+                           <font>
+                              <Font name="System Bold" size="15.0" />
+                           </font>
                         </Label>
-                        <ComboBox fx:id="cbPosicoes" prefWidth="150.0">
+                        <ComboBox fx:id="cbPosicoes" prefHeight="25.0" prefWidth="148.0" style="-fx-background-color: white;">
                            <HBox.margin>
                               <Insets left="30.0" />
                            </HBox.margin>
@@ -62,10 +68,13 @@
                   </HBox>
                   <HBox>
                      <children>
-                        <Label text="Selecao">
+                        <Label text="Seleção" textFill="WHITE">
                            <HBox.margin>
                               <Insets left="10.0" right="30.0" />
                            </HBox.margin>
+                           <font>
+                              <Font name="System Bold" size="15.0" />
+                           </font>
                         </Label>
                         <TextField fx:id="TextFildSelecao">
                            <HBox.margin>
@@ -86,8 +95,14 @@
                      <children>
                         <Group>
                            <children>
-                              <Button mnemonicParsing="false" onAction="#btnconfirmar" text="Confirmar" />
-                              <Button layoutX="103.0" mnemonicParsing="false" onAction="#btncancelar" text="Cancelar" />
+                              <Button mnemonicParsing="false" onAction="#btnconfirmar" style="-fx-background-color: transparent; -fx-border-radius: 30; -fx-border-width: 2; -fx-border-color: white;" text="Confirmar" textFill="WHITE">
+                                 <font>
+                                    <Font name="System Bold" size="15.0" />
+                                 </font></Button>
+                              <Button layoutX="103.0" mnemonicParsing="false" onAction="#btncancelar" style="-fx-background-color: c50d43; -fx-border-radius: 30; -fx-border-width: 2; -fx-border-color: white;" text="Cancelar" textFill="WHITE">
+                                 <font>
+                                    <Font name="System Bold" size="15.0" />
+                                 </font></Button>
                            </children>
                            <HBox.margin>
                               <Insets right="10.0" top="10.0" />

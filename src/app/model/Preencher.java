@@ -65,12 +65,12 @@ public class Preencher {
 		Random rand = new Random();
 		try {
 			List<Selecao> selecoes = Main.list_sele.listar();
-		for(Selecao selec:selecoes) {
-			int numAleatorio1 = rand.nextInt(11);
-			int numAleatorio2 = rand.nextInt(11);
-			Tecnico tec = new Tecnico(nomes[numAleatorio1]+ " " + sobreNomes[numAleatorio2],numAleatorio1, selec.getNome());
-			Main.list_sele.inserir_tecnico(selec.getNome(), tec);
-			Main.list_tecnico.inserir(tec);
+			for(Selecao selec:selecoes) {
+				int numAleatorio1 = rand.nextInt(11);
+				int numAleatorio2 = rand.nextInt(11);
+				Tecnico tec = new Tecnico(nomes[numAleatorio1]+ " " + sobreNomes[numAleatorio2],Main.contador_tecnico, selec.getNome());
+				Main.list_sele.inserir_tecnico(selec.getNome(), tec);
+				Main.list_tecnico.inserir(tec);
 			
 		}
 		} catch (Exception e){}

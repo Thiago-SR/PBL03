@@ -11,6 +11,7 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
 
 <GridPane prefHeight="500.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="app.controller.TelaMenuSelecaoController">
   <columnConstraints>
@@ -29,7 +30,7 @@
             <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
          </columnResizePolicy>
       </TableView>
-      <VBox prefHeight="200.0" prefWidth="100.0" GridPane.columnIndex="1">
+      <VBox prefHeight="200.0" prefWidth="100.0" style="-fx-background-color: #c50d43;" GridPane.columnIndex="1">
          <children>
             <GridPane>
               <columnConstraints>
@@ -42,33 +43,76 @@
                 <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
               </rowConstraints>
                <children>
-                  <Label text="Grupo" />
-                  <Label text="Pontos" GridPane.rowIndex="1" />
-                  <Label text="Posicao no grupo" GridPane.rowIndex="2" />
-                  <Label fx:id="lblGrupoSelecao" GridPane.columnIndex="1" />
-                  <Label fx:id="lblPontosSelecao" GridPane.columnIndex="1" GridPane.rowIndex="1" />
-                  <Label fx:id="lblPosicaoGrupoSelecao" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+                  <Label text="Grupo" textFill="WHITE">
+                     <font>
+                        <Font name="System Bold" size="15.0" />
+                     </font></Label>
+                  <Label text="Pontos" textFill="WHITE" GridPane.rowIndex="1">
+                     <font>
+                        <Font name="System Bold" size="15.0" />
+                     </font></Label>
+                  <Label text="Posição no grupo" textFill="WHITE" GridPane.rowIndex="2">
+                     <font>
+                        <Font name="System Bold" size="15.0" />
+                     </font></Label>
+                  <Label fx:id="lblGrupoSelecao" textFill="WHITE" GridPane.columnIndex="1">
+                     <font>
+                        <Font name="System Bold" size="15.0" />
+                     </font></Label>
+                  <Label fx:id="lblPontosSelecao" textFill="WHITE" GridPane.columnIndex="1" GridPane.rowIndex="1">
+                     <font>
+                        <Font name="System Bold" size="15.0" />
+                     </font></Label>
+                  <Label fx:id="lblPosicaoGrupoSelecao" textFill="WHITE" GridPane.columnIndex="1" GridPane.rowIndex="2">
+                     <font>
+                        <Font name="System Bold" size="15.0" />
+                     </font></Label>
                </children>
                <VBox.margin>
                   <Insets left="10.0" right="10.0" top="100.0" />
                </VBox.margin>
             </GridPane>
-            <HBox>
+            <HBox maxWidth="-Infinity" prefHeight="63.0" prefWidth="441.0">
                <children>
-                  <Group>
-                     <children>
-                        <Button mnemonicParsing="false" onAction="#btnInserir" text="Inserir" />
-                        <Button layoutX="59.0" mnemonicParsing="false" onAction="#btnRemover" text="Remover" />
-                        <Button layoutX="133.0" mnemonicParsing="false" onAction="#btnEditar" text="Editar" />
-                        <Button layoutX="190.0" mnemonicParsing="false" onAction="#btnVerEquipe" text="Ver equipe" />
-                     </children>
-                  </Group>
+                  <Group />
+                  <Button mnemonicParsing="false" onAction="#btnInserir" prefHeight="47.0" prefWidth="84.0" style="-fx-background-color: transparent; -fx-border-radius: 30; -fx-background-radius: 30; -fx-border-color: white; -fx-border-width: 2;" text="Inserir" textFill="WHITE">
+                     <font>
+                        <Font name="System Bold" size="15.0" />
+                     </font>
+                     <HBox.margin>
+                        <Insets />
+                     </HBox.margin>
+                  </Button>
+                  <Button maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#btnRemover" prefHeight="47.0" prefWidth="93.0" style="-fx-background-color: transparent; -fx-background-radius: 30; -fx-border-radius: 30; -fx-border-color: white; -fx-border-width: 2;" text="Remover" textFill="WHITE">
+                     <font>
+                        <Font name="System Bold" size="15.0" />
+                     </font>
+                     <HBox.margin>
+                        <Insets left="10.0" />
+                     </HBox.margin>
+                  </Button>
+                  <Button maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#btnVerEquipe" prefHeight="47.0" prefWidth="105.0" style="-fx-background-color: transparent; -fx-border-color: white; -fx-border-radius: 30; -fx-background-radius: 30; -fx-border-width: 2;" text="Ver equipe" textFill="WHITE">
+                     <font>
+                        <Font name="System Bold" size="15.0" />
+                     </font>
+                     <HBox.margin>
+                        <Insets left="10.0" />
+                     </HBox.margin>
+                  </Button>
+                  <Button mnemonicParsing="false" onAction="#btnEditar" prefHeight="47.0" prefWidth="84.0" style="-fx-background-color: transparent; -fx-border-radius: 30; -fx-background-radius: 30; -fx-border-color: white; -fx-border-width: 2;" text="Editar" textFill="WHITE">
+                     <font>
+                        <Font name="System Bold" size="15.0" />
+                     </font>
+                     <HBox.margin>
+                        <Insets left="10.0" />
+                     </HBox.margin>
+                  </Button>
                </children>
                <padding>
                   <Insets left="15.0" />
                </padding>
                <VBox.margin>
-                  <Insets top="50.0" />
+                  <Insets left="20.0" top="50.0" />
                </VBox.margin>
             </HBox>
          </children>

@@ -3,13 +3,12 @@ package app.controller;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
+
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.control.Button;
-import javafx.scene.control.SplitPane;
-import javafx.scene.input.MouseEvent;
-import javafx.scene.layout.AnchorPane;
+import javafx.scene.image.ImageView;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.GridPane;
 
@@ -21,9 +20,11 @@ public class MainWindowController {
     @FXML
     private URL location;
 
-
     @FXML
     private Button btnArbitro;
+
+    @FXML
+    private Button btnEliminatorias;
 
     @FXML
     private Button btnGrupos;
@@ -35,14 +36,22 @@ public class MainWindowController {
     private Button btnPartidas;
 
     @FXML
+    private Button btnPesquisar;
+
+    @FXML
+    private Button btnPreencher;
+
+    @FXML
     private Button btnSelecao;
 
     @FXML
     private Button btnTecnico;
-    
+
+    @FXML
+    private ImageView imagem;
+
     @FXML
     private BorderPane layoutprincipal;
-   
 
     @FXML
     void menu_arbitro(ActionEvent event) throws IOException {
@@ -52,8 +61,10 @@ public class MainWindowController {
     }
 
     @FXML
-    void menu_grupos(ActionEvent event) {
-
+    void menu_grupos(ActionEvent event) throws IOException {
+    	GridPane g =  FXMLLoader.load(getClass().getResource("/app/view/TelaFaseGrupo.fxml"));
+    	
+    	layoutprincipal.setCenter(g);
     }
 
     @FXML
@@ -76,7 +87,7 @@ public class MainWindowController {
     }
 
     @FXML
-    void menu_tecnico(MouseEvent event) throws IOException {
+    void menu_tecnico(ActionEvent event) throws IOException {
     	GridPane c = FXMLLoader.load(getClass().getResource("/app/view/TelaMenuTecnico.fxml"));
     	layoutprincipal.setCenter(c);
     }

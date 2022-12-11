@@ -10,6 +10,7 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
 
 <GridPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="app.controller.TelaMenujogadorController">
   <columnConstraints>
@@ -20,7 +21,7 @@
     <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
   </rowConstraints>
    <children>
-      <VBox prefHeight="501.0" prefWidth="401.0">
+      <VBox prefHeight="501.0" prefWidth="401.0" style="-fx-background-color: c50d43;">
          <children>
             <GridPane>
                <columnConstraints>
@@ -36,33 +37,60 @@
                   <Insets left="10.0" top="100.0" />
                </VBox.margin>
                <children>
-                  <Label text="Posiçao" GridPane.rowIndex="1" />
-                  <Label text="Quantidade de gols" GridPane.rowIndex="2" />
-                  <Label fx:id="labelJogadorSelecao" GridPane.columnIndex="1" />
-                  <Label fx:id="labelJogadorPosicao" GridPane.columnIndex="1" GridPane.rowIndex="1" />
-                  <Label fx:id="labeljogadorGols" GridPane.columnIndex="1" GridPane.rowIndex="2" />
-                  <Label text="Seleçao" />
+                  <Label text="Posição" textFill="WHITE" GridPane.rowIndex="1">
+                     <font>
+                        <Font name="System Bold" size="17.0" />
+                     </font></Label>
+                  <Label text="Gol Marcados" textFill="WHITE" GridPane.rowIndex="2">
+                     <font>
+                        <Font name="System Bold" size="17.0" />
+                     </font></Label>
+                  <Label fx:id="labelJogadorSelecao" textFill="WHITE" GridPane.columnIndex="1">
+                     <font>
+                        <Font name="System Bold" size="15.0" />
+                     </font></Label>
+                  <Label fx:id="labelJogadorPosicao" textFill="WHITE" GridPane.columnIndex="1" GridPane.rowIndex="1">
+                     <font>
+                        <Font name="System Bold" size="15.0" />
+                     </font></Label>
+                  <Label fx:id="labeljogadorGols" textFill="WHITE" GridPane.columnIndex="1" GridPane.rowIndex="2">
+                     <font>
+                        <Font name="System Bold" size="15.0" />
+                     </font></Label>
+                  <Label text="Seleção" textFill="WHITE">
+                     <font>
+                        <Font name="System Bold" size="17.0" />
+                     </font></Label>
                </children>
             </GridPane>
-            <HBox alignment="CENTER">
+            <HBox alignment="CENTER" prefHeight="31.0" prefWidth="285.0">
                <VBox.margin>
                   <Insets top="100.0" />
                </VBox.margin>
                <children>
-                  <Button mnemonicParsing="false" onAction="#btnInserir" text="Inserir">
+                  <Button mnemonicParsing="false" onAction="#btnInserir" style="-fx-background-color: transparent; -fx-border-radius: 30; -fx-border-color: white; -fx-border-width: 2;" text="Inserir" textFill="WHITE">
                      <HBox.margin>
-                        <Insets left="20.0" />
+                        <Insets />
                      </HBox.margin>
+                     <font>
+                        <Font name="System Bold" size="15.0" />
+                     </font>
                   </Button>
-                  <Button mnemonicParsing="false" onAction="#btnRemover" text="Remover">
+                  <Button mnemonicParsing="false" onAction="#btnRemover" style="-fx-background-color: transparent; -fx-border-radius: 30; -fx-border-color: white; -fx-border-width: 2;" text="Remover" textFill="WHITE">
                      <HBox.margin>
-                        <Insets left="20.0" />
+                        <Insets left="10.0" />
                      </HBox.margin>
+                     <font>
+                        <Font name="System Bold" size="15.0" />
+                     </font>
                   </Button>
-                  <Button mnemonicParsing="false" onAction="#btnEditar" text="Editar">
+                  <Button mnemonicParsing="false" onAction="#btnEditar" style="-fx-background-color: transparent; -fx-border-radius: 30; -fx-border-color: white; -fx-border-width: 2;" text="Editar" textFill="WHITE">
                      <HBox.margin>
-                        <Insets left="20.0" />
+                        <Insets left="10.0" />
                      </HBox.margin>
+                     <font>
+                        <Font name="System Bold" size="15.0" />
+                     </font>
                   </Button>
                </children>
             </HBox>
