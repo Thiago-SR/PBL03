@@ -209,7 +209,7 @@ public class dialogPegarDadosPartidaController {
 	}
 
 	@FXML
-	int SalvarGolsJogadorSelecao01(ActionEvent event) {
+	void SalvarGolsJogadorSelecao01(ActionEvent event) {
 		Jogador jog = this.cbGolJogadorSelecao01.getValue();
 		if(jog !=null) {
 			try {
@@ -237,20 +237,17 @@ public class dialogPegarDadosPartidaController {
 		else {
 			this.lblMensagemGols.setText("*Selecione um jogador!");
 		}
-		
-		return somatorio_gol_selecao01;
-		
 	}
 
 	@FXML
-	int SalvarGolsJogadorSelecao02(ActionEvent event) {
+	void SalvarGolsJogadorSelecao02(ActionEvent event) {
 		Jogador jog = this.cbGolJogadorSelecao02.getValue();
 		if(jog != null) {
 			try {
 				int gols = Integer.parseInt(this.GolsJogadorSelecao02.getText());
 				
 				
-				if(somatorio_gol_selecao01+ gols != Integer.parseInt(this.GolsSelecao02.getText())) {
+				if(somatorio_gol_selecao02+ gols != Integer.parseInt(this.GolsSelecao02.getText())) {
 					throw new Exception();
 				}
 				somatorio_gol_selecao02 += gols;
@@ -265,21 +262,18 @@ public class dialogPegarDadosPartidaController {
 			this.lblMensagemGols.setText("*Selecione um jogador!");
 		}
 		
-		return somatorio_gol_selecao02;
-		
 	}
 
 	@FXML
 	void SalvarPartida(ActionEvent event) {
 		String day;
 		String hora;
-		
-		int gols_time01 = SalvarGolsJogadorSelecao01(event);
-		int gols_time02 = SalvarGolsJogadorSelecao02(event);
+		int gols_time01 = Integer.parseInt(this.GolsSelecao01.getText());
+		int gols_time02 = Integer.parseInt(this.GolsSelecao02.getText());
 		
 		String local = this.TextFildLocal.getText();
 		try {// valida se a entrada esta no formato esperado
-			String hora = this.Hora.getText();
+			hora = this.Hora.getText();
 			SimpleDateFormat formato = new SimpleDateFormat("HH:mm");
 			Date hour = formato.parse(hora);
 		} catch (java.text.ParseException e) {
@@ -298,9 +292,12 @@ public class dialogPegarDadosPartidaController {
 		Arbitro arbitro = this.cbArbitro.getValue();
 		int cod_arbitro = arbitro.getCodigo();
 		
+		if(somatorio_gol_selecao01 == gols_time01 && somatorio_gol_selecao02 == gols_time02) {
+			partida.inserir_dados(cod_arbitro, local, day, hora, gols_time01, gols_time02);
+
+		}
 		
 		
-		partida.inserir_dados(cod_arbitro, local, day, hora, gols_time01, gols_time02);
 	}
 
 	@FXML
