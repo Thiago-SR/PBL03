@@ -18,9 +18,10 @@ import app.model.Tecnico;
  */
 public class Preencher {
 	public static void MockSelecoes(DAO_selecao selecDao) {
+			String[] nomes = {"Catar", "Argentina", "Brasil", "Inglaterra", "França", "Espanha", "Bélgica", "Portugal", "Alemanha", "Holanda", "Uruguai", "Croácia", "Dinamarca", "México", "EUA", "Senegal", "PaísdeGales" , "Polônia", "Austrália", "Japão", "Marrocos", "Suíça", "Gana", "Coreia", "Camarões", "Sérvia", "Canadá", "CostaRica", "Tunísia", "ArábiaSaudita", "Irã", "Equador"};
 			for (int i = 0;i<32;i++) {
 				try {
-					Selecao selec = new Selecao("Time"+(i+1));
+					Selecao selec = new Selecao(nomes[i]);
 					selecDao.inserir(selec);					
 				} catch (Exception e) {
 					System.out.println(e.getMessage());

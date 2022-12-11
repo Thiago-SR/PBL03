@@ -1,12 +1,18 @@
 package app.controller;
 
 import java.net.URL;
+import java.text.Format;
+import java.text.SimpleDateFormat;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.ResourceBundle;
 
+import app.Main;
 import app.model.Arbitro;
 import app.model.Cartoes;
 import app.model.Jogador;
@@ -102,6 +108,7 @@ public class dialogPegarDadosPartidaController {
 
 	ObservableList<Jogador> jogadoresselec01;
 	ObservableList<Jogador> jogadoresselec02;
+	ObservableList<Arbitro> arbitro;
 	Map<Jogador, Integer> jogadores_gols_selecao01 = new HashMap<Jogador,Integer>();
 	Map<Jogador, Integer> jogadores_gols_selecao02 = new HashMap<Jogador,Integer>();
 	Map<Jogador, Integer> jogadores_cartoesVermelho_selecao01 = new HashMap<Jogador, Integer>();
@@ -127,6 +134,8 @@ public class dialogPegarDadosPartidaController {
 		this.cbGolJogadorSelecao02.setItems(jogadoresselec02);
 		this.cbCardJogSelecao01.setItems(jogadoresselec01);
 		this.cbCardJogSelecao02.setItems(jogadoresselec02);
+		arbitro = FXCollections.observableArrayList(Main.list_arbitro.listar());
+		this.cbArbitro.setItems(arbitro);
 	}
 
 	public boolean isClickSalvar() {
@@ -196,10 +205,11 @@ public class dialogPegarDadosPartidaController {
 		else {
 			this.lblMensagemCartoes.setText("*Selecione um jogador!");
 		}
+		
 	}
 
 	@FXML
-	void SalvarGolsJogadorSelecao01(ActionEvent event) {
+	int SalvarGolsJogadorSelecao01(ActionEvent event) {
 		Jogador jog = this.cbGolJogadorSelecao01.getValue();
 		if(jog !=null) {
 			try {
@@ -228,10 +238,12 @@ public class dialogPegarDadosPartidaController {
 			this.lblMensagemGols.setText("*Selecione um jogador!");
 		}
 		
+		return somatorio_gol_selecao01;
+		
 	}
 
 	@FXML
-	void SalvarGolsJogadorSelecao02(ActionEvent event) {
+	int SalvarGolsJogadorSelecao02(ActionEvent event) {
 		Jogador jog = this.cbGolJogadorSelecao02.getValue();
 		if(jog != null) {
 			try {
@@ -241,7 +253,7 @@ public class dialogPegarDadosPartidaController {
 				if(somatorio_gol_selecao01+ gols != Integer.parseInt(this.GolsSelecao02.getText())) {
 					throw new Exception();
 				}
-				somatorio_gol_selecao01 += gols;
+				somatorio_gol_selecao02 += gols;
 				this.jogadores_gols_selecao02.put(jog, gols);
 			}catch(NumberFormatException e) {
 				this.lblMensagemGols.setText("A entrada deve ser numerica");
@@ -253,11 +265,42 @@ public class dialogPegarDadosPartidaController {
 			this.lblMensagemGols.setText("*Selecione um jogador!");
 		}
 		
+		return somatorio_gol_selecao02;
+		
 	}
 
 	@FXML
 	void SalvarPartida(ActionEvent event) {
-
+		String day;
+		String hora;
+		
+		int gols_time01 = SalvarGolsJogadorSelecao01(event);
+		int gols_time02 = SalvarGolsJogadorSelecao02(event);
+		
+		String local = this.TextFildLocal.getText();
+		try {// valida se a entrada esta no formato esperado
+			String hora = this.Hora.getText();
+			SimpleDateFormat formato = new SimpleDateFormat("HH:mm");
+			Date hour = formato.parse(hora);
+		} catch (java.text.ParseException e) {
+			System.out.println("Horario invalido!");
+			this.lblErroPg02.setText("Horario invalido");
+		}
+		try {// valida se a entrada esta no formato esperado
+			LocalDate data = this.Data.getValue();
+			String day = data.toString();
+			SimpleDateFormat formato = new SimpleDateFormat("yyyy-mm-dd");
+			Date date = formato.parse(day);
+		} catch (java.text.ParseException a) {
+			System.out.println("Data invalida!");
+			this.lblErroPg02.setText("Data invalida");
+		}
+		Arbitro arbitro = this.cbArbitro.getValue();
+		int cod_arbitro = arbitro.getCodigo();
+		
+		
+		
+		partida.inserir_dados(cod_arbitro, local, day, hora, gols_time01, gols_time02);
 	}
 
 	@FXML
@@ -275,6 +318,9 @@ public class dialogPegarDadosPartidaController {
 		ObservableList<Cartoes> obListCard = FXCollections.observableArrayList(cartoes);
 		this.cbCardColorSelecao01.setItems(obListCard);
 		this.cbCardColorSelecao02.setItems(obListCard);
+		
+		
+		
 		
 	}
 
