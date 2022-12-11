@@ -266,8 +266,8 @@ public class dialogPegarDadosPartidaController {
 
 	@FXML
 	void SalvarPartida(ActionEvent event) {
-		String day;
-		String hora;
+		String day = null;
+		String hora = null;
 		int gols_time01 = Integer.parseInt(this.GolsSelecao01.getText());
 		int gols_time02 = Integer.parseInt(this.GolsSelecao02.getText());
 		
@@ -282,7 +282,7 @@ public class dialogPegarDadosPartidaController {
 		}
 		try {// valida se a entrada esta no formato esperado
 			LocalDate data = this.Data.getValue();
-			String day = data.toString();
+			day = data.toString();
 			SimpleDateFormat formato = new SimpleDateFormat("yyyy-mm-dd");
 			Date date = formato.parse(day);
 		} catch (java.text.ParseException a) {
@@ -293,31 +293,65 @@ public class dialogPegarDadosPartidaController {
 		int cod_arbitro = arbitro.getCodigo();
 		
 		if(somatorio_gol_selecao01 == gols_time01 && somatorio_gol_selecao02 == gols_time02) {
-			
-			Jogador jogGol1 = this.cbGolJogadorSelecao01.getValue();
-			jogGol1.setGols(Integer.parseInt(this.GolsJogadorSelecao01.getText()));
-			Jogador jogGol2 = this.cbGolJogadorSelecao02.getValue();
-			jogGol2.setGols(Integer.parseInt(this.GolsJogadorSelecao02.getText()));
-			Jogador jogCard1 = this.cbCardJogSelecao01.getValue();
-			if(this.cbCardColorSelecao01.getValue() != null) {
-				if(this.cbCardColorSelecao01.getValue().getTipo().equals("Amarelo")==true){
-					jogCard1.setCardAmarelo(Integer.parseInt(this.CadJogadorSelecao01.getText()));
-				}
-				else{	
-					jogCard1.setCardVermelho(Integer.parseInt(this.CadJogadorSelecao01.getText()));
-				}
+			for (Map.Entry<Jogador, Integer> pair : jogadores_gols_selecao01.entrySet()) {
+				int golsPartida = pair.getValue();
+				Jogador jog = pair.getKey();
+				// ATUALIZA GOLS DO JOGADOR NA COPA DO MUNDO
+				jog.setGols(golsPartida+=jog.getNumGols());
+				// ATUALIZA GOLS DO JOGADOR NA PARTIDA
+				int tempGol = partida.get_dados_jog().get(jog.getCod()).getQuant_gols();
+				partida.get_dados_jog().get(jog.getCod()).setQuant_gols(tempGol+=golsPartida);
 			}
-			Jogador jogCard2 = this.cbCardJogSelecao02.getValue();
-			if(this.cbCardColorSelecao02.getValue() != null) {
-				if(this.cbCardColorSelecao02.getValue().getTipo().equals("Amarelo")==true){
-					jogCard2.setCardAmarelo(Integer.parseInt(this.CadJogadorSelecao02.getText()));
-				}
-				else{	
-					jogCard2.setCardVermelho(Integer.parseInt(this.CadJogadorSelecao02.getText()));
-				}
+			for (Map.Entry<Jogador, Integer> pair : jogadores_gols_selecao02.entrySet()) {
+				int golsPartida = pair.getValue();
+				Jogador jog = pair.getKey();
+				// ATUALIZA GOLS DO JOGADOR NA COPA DO MUNDO
+				jog.setGols(golsPartida+=jog.getNumGols());
+				// ATUALIZA GOLS DO JOGADOR NA PARTIDA
+				int tempGol = partida.get_dados_jog().get(jog.getCod()).getQuant_gols();
+				partida.get_dados_jog().get(jog.getCod()).setQuant_gols(tempGol+=golsPartida);
+			}
+			for (Map.Entry<Jogador, Integer> pair : jogadores_cartoesVermelho_selecao01.entrySet()) {
+				int cartoes = pair.getValue();
+				Jogador jog = pair.getKey();
+				// ATUALIZA OS CARTOES DO JOGADOR NA COPA DO MUNDO
+				jog.setCardAmarelo(cartoes+=jog.getCardVermelho());
+				// ATUALIZA OS CARTOES DO JOGADOR NA PARTIDA
+				int tempCartao = partida.get_dados_jog().get(jog.getCod()).getCard_vermelho();
+				partida.get_dados_jog().get(jog.getCod()).setCard_vermelho(tempCartao+=cartoes);
+			}
+			for (Map.Entry<Jogador, Integer> pair : jogadores_cartoesVermelho_selecao02.entrySet()) {
+				int cartoes = pair.getValue();
+				Jogador jog = pair.getKey();
+				// ATUALIZA OS CARTOES DO JOGADOR NA COPA DO MUNDO
+				jog.setCardAmarelo(cartoes+=jog.getCardVermelho());
+				// ATUALIZA OS CARTOES DO JOGADOR NA PARTIDA
+				int tempCartao = partida.get_dados_jog().get(jog.getCod()).getCard_vermelho();
+				partida.get_dados_jog().get(jog.getCod()).setCard_vermelho(tempCartao+=cartoes);
+			}
+			for (Map.Entry<Jogador, Integer> pair : jogadores_cartoesAmarelo_selecao01.entrySet()) {
+				int cartoes = pair.getValue();
+				Jogador jog = pair.getKey();
+				// ATUALIZA OS CARTOES DO JOGADOR NA COPA DO MUNDO
+				jog.setCardAmarelo(cartoes+=jog.getCardVermelho());
+				// ATUALIZA OS CARTOES DO JOGADOR NA PARTIDA
+				int tempCartao = partida.get_dados_jog().get(jog.getCod()).getCard_amarelo();
+				partida.get_dados_jog().get(jog.getCod()).setCard_amarelo(tempCartao+=cartoes);
+			}
+			for (Map.Entry<Jogador, Integer> pair : jogadores_cartoesAmarelo_selecao02.entrySet()) {
+				int cartoes = pair.getValue();
+				Jogador jog = pair.getKey();
+				// ATUALIZA OS CARTOES DO JOGADOR NA COPA DO MUNDO
+				jog.setCardAmarelo(cartoes+=jog.getCardVermelho());
+				// ATUALIZA OS CARTOES DO JOGADOR NA PARTIDA
+				int tempCartao = partida.get_dados_jog().get(jog.getCod()).getCard_amarelo();
+				partida.get_dados_jog().get(jog.getCod()).setCard_amarelo(tempCartao+=cartoes);
 			}
 			partida.inserir_dados(cod_arbitro, local, day, hora, gols_time01, gols_time02);
 		}
+			
+			
+			
 	}
 
 	@FXML
@@ -335,9 +369,6 @@ public class dialogPegarDadosPartidaController {
 		ObservableList<Cartoes> obListCard = FXCollections.observableArrayList(cartoes);
 		this.cbCardColorSelecao01.setItems(obListCard);
 		this.cbCardColorSelecao02.setItems(obListCard);
-		
-		
-		
 		
 	}
 
