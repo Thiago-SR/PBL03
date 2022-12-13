@@ -13,6 +13,7 @@ import java.util.Map;
 import java.util.ResourceBundle;
 
 import app.Main;
+import app.Exceptions.CampoVazio;
 import app.model.Arbitro;
 import app.model.Cartoes;
 import app.model.Jogador;
@@ -36,8 +37,8 @@ public class dialogPegarDadosPartidaController {
 	@FXML
 	private URL location;
 	
-   @FXML
-    private DatePicker Data;
+    @FXML
+    private TextField Data;
    
    @FXML
    private TextField Hora;
@@ -222,16 +223,17 @@ public class dialogPegarDadosPartidaController {
 				int gols = Integer.parseInt(this.GolsJogadorSelecao01.getText());
 				
 				
-				if(somatorio_gol_selecao01+ gols != Integer.parseInt(this.GolsSelecao01.getText())) {
+				if(somatorio_gol_selecao01+ gols > Integer.parseInt(this.GolsSelecao01.getText())) {
 					throw new Exception();
 				}
 				somatorio_gol_selecao01 += gols;
 				this.jogadores_gols_selecao01.put(jog, gols);
+				this.GolsJogadorSelecao01.clear();
 			}catch(NumberFormatException e) {
-				this.lblMensagemGols.setText("A entrada deve ser numerica");
+				this.lblMensagemGols.setText("A entrada deve ser numerica, tanto os gols dos jogadores quanto das selecoes!");
 			}
 			catch(Exception a) {
-				
+				this.lblMensagemGols.setText("*O numero de gols declarado excede o numero de gols feitos pela selecao!");
 			}
 		}
 		else {
@@ -247,16 +249,16 @@ public class dialogPegarDadosPartidaController {
 				int gols = Integer.parseInt(this.GolsJogadorSelecao02.getText());
 				
 				
-				if(somatorio_gol_selecao02+ gols != Integer.parseInt(this.GolsSelecao02.getText())) {
+				if(somatorio_gol_selecao02+ gols > Integer.parseInt(this.GolsSelecao02.getText())) {
 					throw new Exception();
 				}
 				somatorio_gol_selecao02 += gols;
 				this.jogadores_gols_selecao02.put(jog, gols);
 			}catch(NumberFormatException e) {
-				this.lblMensagemGols.setText("A entrada deve ser numerica");
+				this.lblMensagemGols.setText("A entrada deve ser numerica, tanto os gols dos jogadores quanto das selecoes!");
 			}
 			catch(Exception a) {
-				
+				this.lblMensagemGols.setText("*O numero de gols excede o numero de gols feitos pela selecao!");
 			}
 		}else {
 			this.lblMensagemGols.setText("*Selecione um jogador!");
@@ -266,91 +268,118 @@ public class dialogPegarDadosPartidaController {
 
 	@FXML
 	void SalvarPartida(ActionEvent event) {
-		String day = null;
+		String data = null;
 		String hora = null;
-		int gols_time01 = Integer.parseInt(this.GolsSelecao01.getText());
-		int gols_time02 = Integer.parseInt(this.GolsSelecao02.getText());
+		int gols_time01 =0;
+		int gols_time02=0;
+		int cod_arbitro=0;
+		try {
+			gols_time01 = Integer.parseInt(this.GolsSelecao01.getText());
+			gols_time02 = Integer.parseInt(this.GolsSelecao02.getText());
+			
 		
-		String local = this.TextFildLocal.getText();
-		try {// valida se a entrada esta no formato esperado
+			String local = this.TextFildLocal.getText();
+			if(local.equals("")==true)
+				throw new CampoVazio();
+			
+			
+			// valida se a entrada esta no formato esperado
 			hora = this.Hora.getText();
 			SimpleDateFormat formato = new SimpleDateFormat("HH:mm");
 			Date hour = formato.parse(hora);
-		} catch (java.text.ParseException e) {
-			System.out.println("Horario invalido!");
-			this.lblErroPg02.setText("Horario invalido");
-		}
-		try {// valida se a entrada esta no formato esperado
-			LocalDate data = this.Data.getValue();
-			day = data.toString();
-			SimpleDateFormat formato = new SimpleDateFormat("yyyy-mm-dd");
-			Date date = formato.parse(day);
-		} catch (java.text.ParseException a) {
-			System.out.println("Data invalida!");
-			this.lblErroPg02.setText("Data invalida");
-		}
-		Arbitro arbitro = this.cbArbitro.getValue();
-		int cod_arbitro = arbitro.getCodigo();
-		
-		if(somatorio_gol_selecao01 == gols_time01 && somatorio_gol_selecao02 == gols_time02) {
-			for (Map.Entry<Jogador, Integer> pair : jogadores_gols_selecao01.entrySet()) {
-				int golsPartida = pair.getValue();
-				Jogador jog = pair.getKey();
-				// ATUALIZA GOLS DO JOGADOR NA COPA DO MUNDO
-				jog.setGols(golsPartida+=jog.getNumGols());
-				// ATUALIZA GOLS DO JOGADOR NA PARTIDA
-				int tempGol = partida.get_dados_jog().get(jog.getCod()).getQuant_gols();
-				partida.get_dados_jog().get(jog.getCod()).setQuant_gols(tempGol+=golsPartida);
-			}
-			for (Map.Entry<Jogador, Integer> pair : jogadores_gols_selecao02.entrySet()) {
-				int golsPartida = pair.getValue();
-				Jogador jog = pair.getKey();
-				// ATUALIZA GOLS DO JOGADOR NA COPA DO MUNDO
-				jog.setGols(golsPartida+=jog.getNumGols());
-				// ATUALIZA GOLS DO JOGADOR NA PARTIDA
-				int tempGol = partida.get_dados_jog().get(jog.getCod()).getQuant_gols();
-				partida.get_dados_jog().get(jog.getCod()).setQuant_gols(tempGol+=golsPartida);
-			}
-			for (Map.Entry<Jogador, Integer> pair : jogadores_cartoesVermelho_selecao01.entrySet()) {
-				int cartoes = pair.getValue();
-				Jogador jog = pair.getKey();
-				// ATUALIZA OS CARTOES DO JOGADOR NA COPA DO MUNDO
-				jog.setCardAmarelo(cartoes+=jog.getCardVermelho());
-				// ATUALIZA OS CARTOES DO JOGADOR NA PARTIDA
-				int tempCartao = partida.get_dados_jog().get(jog.getCod()).getCard_vermelho();
-				partida.get_dados_jog().get(jog.getCod()).setCard_vermelho(tempCartao+=cartoes);
-			}
-			for (Map.Entry<Jogador, Integer> pair : jogadores_cartoesVermelho_selecao02.entrySet()) {
-				int cartoes = pair.getValue();
-				Jogador jog = pair.getKey();
-				// ATUALIZA OS CARTOES DO JOGADOR NA COPA DO MUNDO
-				jog.setCardAmarelo(cartoes+=jog.getCardVermelho());
-				// ATUALIZA OS CARTOES DO JOGADOR NA PARTIDA
-				int tempCartao = partida.get_dados_jog().get(jog.getCod()).getCard_vermelho();
-				partida.get_dados_jog().get(jog.getCod()).setCard_vermelho(tempCartao+=cartoes);
-			}
-			for (Map.Entry<Jogador, Integer> pair : jogadores_cartoesAmarelo_selecao01.entrySet()) {
-				int cartoes = pair.getValue();
-				Jogador jog = pair.getKey();
-				// ATUALIZA OS CARTOES DO JOGADOR NA COPA DO MUNDO
-				jog.setCardAmarelo(cartoes+=jog.getCardVermelho());
-				// ATUALIZA OS CARTOES DO JOGADOR NA PARTIDA
-				int tempCartao = partida.get_dados_jog().get(jog.getCod()).getCard_amarelo();
-				partida.get_dados_jog().get(jog.getCod()).setCard_amarelo(tempCartao+=cartoes);
-			}
-			for (Map.Entry<Jogador, Integer> pair : jogadores_cartoesAmarelo_selecao02.entrySet()) {
-				int cartoes = pair.getValue();
-				Jogador jog = pair.getKey();
-				// ATUALIZA OS CARTOES DO JOGADOR NA COPA DO MUNDO
-				jog.setCardAmarelo(cartoes+=jog.getCardVermelho());
-				// ATUALIZA OS CARTOES DO JOGADOR NA PARTIDA
-				int tempCartao = partida.get_dados_jog().get(jog.getCod()).getCard_amarelo();
-				partida.get_dados_jog().get(jog.getCod()).setCard_amarelo(tempCartao+=cartoes);
-			}
-			partida.inserir_dados(cod_arbitro, local, day, hora, gols_time01, gols_time02);
-		}
 			
 			
+			// valida se a entrada esta no formato esperado
+			data = this.Data.getText();
+			SimpleDateFormat format = new SimpleDateFormat("yyyy-mm-dd");
+			Date date = format.parse(data);
+			 
+			Arbitro arbitro = this.cbArbitro.getValue();
+			cod_arbitro = arbitro.getCodigo();
+			
+			if(somatorio_gol_selecao01 == gols_time01 && somatorio_gol_selecao02 == gols_time02) {
+				for (Map.Entry<Jogador, Integer> pair : jogadores_gols_selecao01.entrySet()) {
+					int golsPartida = pair.getValue();
+					Jogador jog = pair.getKey();
+					// ATUALIZA GOLS DO JOGADOR NA COPA DO MUNDO
+					jog.setGols(golsPartida+=jog.getNumGols());
+					// ATUALIZA GOLS DO JOGADOR NA PARTIDA
+					int tempGol = partida.get_dados_jog().get(jog.getCod()).getQuant_gols();
+					partida.get_dados_jog().get(jog.getCod()).setQuant_gols(tempGol+=golsPartida);
+				}
+				for (Map.Entry<Jogador, Integer> pair : jogadores_gols_selecao02.entrySet()) {
+					int golsPartida = pair.getValue();
+					Jogador jog = pair.getKey();
+					// ATUALIZA GOLS DO JOGADOR NA COPA DO MUNDO
+					jog.setGols(golsPartida+=jog.getNumGols());
+					// ATUALIZA GOLS DO JOGADOR NA PARTIDA
+					int tempGol = partida.get_dados_jog().get(jog.getCod()).getQuant_gols();
+					partida.get_dados_jog().get(jog.getCod()).setQuant_gols(tempGol+=golsPartida);
+				}
+				for (Map.Entry<Jogador, Integer> pair : jogadores_cartoesVermelho_selecao01.entrySet()) {
+					int cartoes = pair.getValue();
+					Jogador jog = pair.getKey();
+					// ATUALIZA OS CARTOES DO JOGADOR NA COPA DO MUNDO
+					jog.setCardAmarelo(cartoes+=jog.getCardVermelho());
+					// ATUALIZA OS CARTOES DO JOGADOR NA PARTIDA
+					int tempCartao = partida.get_dados_jog().get(jog.getCod()).getCard_vermelho();
+					partida.get_dados_jog().get(jog.getCod()).setCard_vermelho(tempCartao+=cartoes);
+				}
+				for (Map.Entry<Jogador, Integer> pair : jogadores_cartoesVermelho_selecao02.entrySet()) {
+					int cartoes = pair.getValue();
+					Jogador jog = pair.getKey();
+					// ATUALIZA OS CARTOES DO JOGADOR NA COPA DO MUNDO
+					jog.setCardAmarelo(cartoes+=jog.getCardVermelho());
+					// ATUALIZA OS CARTOES DO JOGADOR NA PARTIDA
+					int tempCartao = partida.get_dados_jog().get(jog.getCod()).getCard_vermelho();
+					partida.get_dados_jog().get(jog.getCod()).setCard_vermelho(tempCartao+=cartoes);
+				}
+				for (Map.Entry<Jogador, Integer> pair : jogadores_cartoesAmarelo_selecao01.entrySet()) {
+					int cartoes = pair.getValue();
+					Jogador jog = pair.getKey();
+					// ATUALIZA OS CARTOES DO JOGADOR NA COPA DO MUNDO
+					jog.setCardAmarelo(cartoes+=jog.getCardVermelho());
+					// ATUALIZA OS CARTOES DO JOGADOR NA PARTIDA
+					int tempCartao = partida.get_dados_jog().get(jog.getCod()).getCard_amarelo();
+					partida.get_dados_jog().get(jog.getCod()).setCard_amarelo(tempCartao+=cartoes);
+				}
+				for (Map.Entry<Jogador, Integer> pair : jogadores_cartoesAmarelo_selecao02.entrySet()) {
+					int cartoes = pair.getValue();
+					Jogador jog = pair.getKey();
+					// ATUALIZA OS CARTOES DO JOGADOR NA COPA DO MUNDO
+					jog.setCardAmarelo(cartoes+=jog.getCardVermelho());
+					// ATUALIZA OS CARTOES DO JOGADOR NA PARTIDA
+					int tempCartao = partida.get_dados_jog().get(jog.getCod()).getCard_amarelo();
+					partida.get_dados_jog().get(jog.getCod()).setCard_amarelo(tempCartao+=cartoes);
+				}
+				partida.inserir_dados(cod_arbitro, local, data, hora, gols_time01, gols_time02);
+				this.ClickSalvar = true;
+				this.stage.close();
+			}else {
+				this.lblErroPlacar.setText("*O placar é diferente da soma dos gols dos jogadores!");
+			}
+			
+		}
+		catch(NumberFormatException e){
+			if(this.GolsSelecao01.getText().equals("")== true || this.GolsSelecao02.getText().equals(""))
+					this.lblErroPlacar.setText("*Por favor preencha todos os campos!");
+			else
+				this.lblErroPlacar.setText("*A entrada deve ser numerica!");
+			this.lblErroPlacar.setVisible(true);
+		}
+		 catch (java.text.ParseException e) {
+				System.out.println("Horario invalido!");
+				this.lblErroPg02.setText("*Data ou hora invalido!");
+				this.lblErroPg02.setVisible(true);
+			}
+		catch(NullPointerException a){
+			this.lblErroPg02.setText("*Selecione um arbitro");
+			this.lblErroPg02.setVisible(true);
+		}
+		catch(CampoVazio b) {
+			this.lblErroPg02.setText("*Declare o local da partida!");
+			this.lblErroPg02.setVisible(true);
+		}
 			
 	}
 

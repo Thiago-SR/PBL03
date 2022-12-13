@@ -381,58 +381,12 @@ public class TelaFaseGrupoController {
     void ClickIniciarFaseGrupo(ActionEvent event) {
     	try {
 			Fase_grupo faseGrupo = new Fase_grupo(Main.list_sele.listar());
-			this.RunFaseGrupo =true;
+			Main.faseGrupo = faseGrupo;
 			this.btnIniciarFaseGrupo.setVisible(false);
 			this.btnEncerrarFaseGrupo.setVisible(true);
-			this.grupo01 = faseGrupo.get_grupos().get(0);
-			this.grupo02 = faseGrupo.get_grupos().get(1);
-			this.grupo03 = faseGrupo.get_grupos().get(2);
-			this.grupo04 = faseGrupo.get_grupos().get(3);
-			this.grupo05 = faseGrupo.get_grupos().get(4);
-			this.grupo06 = faseGrupo.get_grupos().get(5);
-			this.grupo07 = faseGrupo.get_grupos().get(6);
-			this.grupo08 = faseGrupo.get_grupos().get(7);
 			
-			this.lblGrupoASelecao01.setText(grupo01.getSelecoes().get(0).getNome());
-			this.lblGrupoASelecao02.setText(grupo01.getSelecoes().get(1).getNome());
-			this.lblGrupoASelecao03.setText(grupo01.getSelecoes().get(2).getNome());
-			this.lblGrupoASelecao04.setText(grupo01.getSelecoes().get(3).getNome());
-			
-			this.lblGrupoBSelecao01.setText(grupo02.getSelecoes().get(0).getNome());
-			this.lblGrupoBSelecao02.setText(grupo02.getSelecoes().get(1).getNome());
-			this.lblGrupoBSelecao03.setText(grupo02.getSelecoes().get(2).getNome());
-			this.lblGrupoBSelecao04.setText(grupo02.getSelecoes().get(3).getNome());
-			
-			this.lblGrupoCSelecao01.setText(grupo03.getSelecoes().get(0).getNome());
-			this.lblGrupoCSelecao02.setText(grupo03.getSelecoes().get(1).getNome());
-			this.lblGrupoCSelecao03.setText(grupo03.getSelecoes().get(2).getNome());
-			this.lblGrupoCSelecao04.setText(grupo03.getSelecoes().get(3).getNome());
-			
-			this.lblGrupoDSelecao01.setText(grupo04.getSelecoes().get(0).getNome());
-			this.lblGrupoDSelecao02.setText(grupo04.getSelecoes().get(1).getNome());
-			this.lblGrupoDSelecao03.setText(grupo04.getSelecoes().get(2).getNome());
-			this.lblGrupoDSelecao04.setText(grupo04.getSelecoes().get(3).getNome());
-			
-			this.lblGrupoESelecao01.setText(grupo05.getSelecoes().get(0).getNome());
-			this.lblGrupoESelecao02.setText(grupo05.getSelecoes().get(1).getNome());
-			this.lblGrupoESelecao03.setText(grupo05.getSelecoes().get(2).getNome());
-			this.lblGrupoESelecao04.setText(grupo05.getSelecoes().get(3).getNome());
-			
-			this.lblGrupoFSelecao01.setText(grupo06.getSelecoes().get(0).getNome());
-			this.lblGrupoFSelecao02.setText(grupo06.getSelecoes().get(1).getNome());
-			this.lblGrupoFSelecao03.setText(grupo06.getSelecoes().get(2).getNome());
-			this.lblGrupoFSelecao04.setText(grupo06.getSelecoes().get(3).getNome());
-			
-			this.lblGrupoGSelecao01.setText(grupo07.getSelecoes().get(0).getNome());
-			this.lblGrupoGSelecao02.setText(grupo07.getSelecoes().get(1).getNome());
-			this.lblGrupoGSelecao03.setText(grupo07.getSelecoes().get(2).getNome());
-			this.lblGrupoGSelecao04.setText(grupo07.getSelecoes().get(3).getNome());
-			
-			this.lblGrupoHSelecao01.setText(grupo08.getSelecoes().get(0).getNome());
-			this.lblGrupoHSelecao02.setText(grupo08.getSelecoes().get(1).getNome());
-			this.lblGrupoHSelecao03.setText(grupo08.getSelecoes().get(2).getNome());
-			this.lblGrupoHSelecao04.setText(grupo08.getSelecoes().get(3).getNome());
-			
+			CarregarGrupos();
+			Main.RunFaseGrupo = true;
 			
 		} catch (NumSelecException e) {
 			
@@ -456,7 +410,7 @@ public class TelaFaseGrupoController {
     		System.out.println(partida.getSelecao01());
     		boolean clickSalvar = ShowPegarDadosPartida(partida);
     		if(clickSalvar) {
-    			
+    			this.TableViewPartidasGrupo.refresh();
     		}
     	}
     }
@@ -468,7 +422,8 @@ public class TelaFaseGrupoController {
 
     @FXML
     void initialize() {
-        if(RunFaseGrupo) {
+        if(Main.RunFaseGrupo) {
+        	CarregarGrupos();
         	this.btnEncerrarFaseGrupo.setVisible(true);     	
         }
         else
@@ -494,6 +449,57 @@ public class TelaFaseGrupoController {
     	dialogStage.showAndWait();
     	
     	return controller.isClickSalvar();
+    }
+    
+    public void CarregarGrupos() {
+    	this.grupo01 = Main.faseGrupo.get_grupos().get(0);
+		this.grupo02 = Main.faseGrupo.get_grupos().get(1);
+		this.grupo03 = Main.faseGrupo.get_grupos().get(2);
+		this.grupo04 = Main.faseGrupo.get_grupos().get(3);
+		this.grupo05 = Main.faseGrupo.get_grupos().get(4);
+		this.grupo06 = Main.faseGrupo.get_grupos().get(5);
+		this.grupo07 = Main.faseGrupo.get_grupos().get(6);
+		this.grupo08 = Main.faseGrupo.get_grupos().get(7);
+		
+		this.lblGrupoASelecao01.setText(grupo01.getSelecoes().get(0).getNome());
+		this.lblGrupoASelecao02.setText(grupo01.getSelecoes().get(1).getNome());
+		this.lblGrupoASelecao03.setText(grupo01.getSelecoes().get(2).getNome());
+		this.lblGrupoASelecao04.setText(grupo01.getSelecoes().get(3).getNome());
+		
+		this.lblGrupoBSelecao01.setText(grupo02.getSelecoes().get(0).getNome());
+		this.lblGrupoBSelecao02.setText(grupo02.getSelecoes().get(1).getNome());
+		this.lblGrupoBSelecao03.setText(grupo02.getSelecoes().get(2).getNome());
+		this.lblGrupoBSelecao04.setText(grupo02.getSelecoes().get(3).getNome());
+		
+		this.lblGrupoCSelecao01.setText(grupo03.getSelecoes().get(0).getNome());
+		this.lblGrupoCSelecao02.setText(grupo03.getSelecoes().get(1).getNome());
+		this.lblGrupoCSelecao03.setText(grupo03.getSelecoes().get(2).getNome());
+		this.lblGrupoCSelecao04.setText(grupo03.getSelecoes().get(3).getNome());
+		
+		this.lblGrupoDSelecao01.setText(grupo04.getSelecoes().get(0).getNome());
+		this.lblGrupoDSelecao02.setText(grupo04.getSelecoes().get(1).getNome());
+		this.lblGrupoDSelecao03.setText(grupo04.getSelecoes().get(2).getNome());
+		this.lblGrupoDSelecao04.setText(grupo04.getSelecoes().get(3).getNome());
+		
+		this.lblGrupoESelecao01.setText(grupo05.getSelecoes().get(0).getNome());
+		this.lblGrupoESelecao02.setText(grupo05.getSelecoes().get(1).getNome());
+		this.lblGrupoESelecao03.setText(grupo05.getSelecoes().get(2).getNome());
+		this.lblGrupoESelecao04.setText(grupo05.getSelecoes().get(3).getNome());
+		
+		this.lblGrupoFSelecao01.setText(grupo06.getSelecoes().get(0).getNome());
+		this.lblGrupoFSelecao02.setText(grupo06.getSelecoes().get(1).getNome());
+		this.lblGrupoFSelecao03.setText(grupo06.getSelecoes().get(2).getNome());
+		this.lblGrupoFSelecao04.setText(grupo06.getSelecoes().get(3).getNome());
+		
+		this.lblGrupoGSelecao01.setText(grupo07.getSelecoes().get(0).getNome());
+		this.lblGrupoGSelecao02.setText(grupo07.getSelecoes().get(1).getNome());
+		this.lblGrupoGSelecao03.setText(grupo07.getSelecoes().get(2).getNome());
+		this.lblGrupoGSelecao04.setText(grupo07.getSelecoes().get(3).getNome());
+		
+		this.lblGrupoHSelecao01.setText(grupo08.getSelecoes().get(0).getNome());
+		this.lblGrupoHSelecao02.setText(grupo08.getSelecoes().get(1).getNome());
+		this.lblGrupoHSelecao03.setText(grupo08.getSelecoes().get(2).getNome());
+		this.lblGrupoHSelecao04.setText(grupo08.getSelecoes().get(3).getNome());
     }
 
 }
