@@ -25,6 +25,7 @@ public class Main extends Application {
 	public static int contador_arbitro = 10;
 	public static Fase_grupo faseGrupo;
 	public static boolean RunFaseGrupo = false;
+	public static boolean FimFaseGrupo = false;
 	@Override
 	public void start(Stage primaryStage) throws Exception {
 		Preencher p = new Preencher();

@@ -52,7 +52,7 @@
                                     <Insets top="10.0" />
                                  </HBox.margin>
                               </Label>
-                              <Label fx:id="lblGrupoAptSelecao01" alignment="TOP_RIGHT" contentDisplay="RIGHT" text="0 " textFill="#450518" HBox.hgrow="ALWAYS">
+                              <Label fx:id="lblGrupoAptSelecao01" alignment="TOP_RIGHT" contentDisplay="RIGHT" maxWidth="1.7976931348623157E308" text="0 " textFill="#450518" HBox.hgrow="ALWAYS">
                                  <HBox.margin>
                                     <Insets left="20.0" top="10.0" />
                                  </HBox.margin>
@@ -78,7 +78,7 @@
                                     <Font name="System Bold" size="12.0" />
                                  </font>
                               </Label>
-                              <Label fx:id="lblGrupoAptSelecao02" text="0">
+                              <Label fx:id="lblGrupoAptSelecao02" alignment="TOP_RIGHT" maxWidth="1.7976931348623157E308" prefHeight="17.0" prefWidth="24.0" text="0">
                                  <HBox.margin>
                                     <Insets left="20.0" top="10.0" />
                                  </HBox.margin>
@@ -101,7 +101,7 @@
                                     <Insets top="10.0" />
                                  </HBox.margin>
                               </Label>
-                              <Label fx:id="lblGrupoAptSelecao03" text="0" textFill="#450518">
+                              <Label fx:id="lblGrupoAptSelecao03" alignment="TOP_RIGHT" maxWidth="1.7976931348623157E308" prefHeight="17.0" prefWidth="24.0" text="0" textFill="#450518">
                                  <HBox.margin>
                                     <Insets left="20.0" top="10.0" />
                                  </HBox.margin>
@@ -124,7 +124,7 @@
                                     <Insets top="10.0" />
                                  </HBox.margin>
                               </Label>
-                              <Label fx:id="lblGrupoAptSelecao04" text="0" textFill="#450518">
+                              <Label fx:id="lblGrupoAptSelecao04" alignment="TOP_RIGHT" prefHeight="17.0" prefWidth="24.0" text="0" textFill="#450518">
                                  <HBox.margin>
                                     <Insets left="20.0" top="10.0" />
                                  </HBox.margin>
@@ -160,7 +160,7 @@
                                     <Insets />
                                  </HBox.margin>
                               </Label>
-                              <Label fx:id="lblGrupoCptSelecao01" alignment="TOP_RIGHT" contentDisplay="RIGHT" text="0 " textFill="#450518" HBox.hgrow="ALWAYS">
+                              <Label fx:id="lblGrupoCptSelecao01" alignment="TOP_RIGHT" contentDisplay="RIGHT" prefHeight="17.0" prefWidth="27.0" text="0 " textFill="#450518" HBox.hgrow="ALWAYS">
                                  <HBox.margin>
                                     <Insets left="20.0" />
                                  </HBox.margin>
@@ -186,7 +186,7 @@
                                     <Font name="System Bold" size="12.0" />
                                  </font>
                               </Label>
-                              <Label fx:id="lblGrupoCptSelecao02" text="0">
+                              <Label fx:id="lblGrupoCptSelecao02" alignment="TOP_RIGHT" prefHeight="17.0" prefWidth="26.0" text="0">
                                  <HBox.margin>
                                     <Insets left="20.0" />
                                  </HBox.margin>
@@ -206,7 +206,7 @@
                                     <Font name="System Bold" size="12.0" />
                                  </font>
                               </Label>
-                              <Label fx:id="lblGrupoCptSelecao03" text="0" textFill="#450518">
+                              <Label fx:id="lblGrupoCptSelecao03" alignment="TOP_RIGHT" prefHeight="17.0" prefWidth="26.0" text="0" textFill="#450518">
                                  <HBox.margin>
                                     <Insets left="20.0" />
                                  </HBox.margin>
@@ -226,7 +226,7 @@
                                     <Font name="System Bold" size="12.0" />
                                  </font>
                               </Label>
-                              <Label fx:id="lblGrupoCptSelecao04" text="0" textFill="#450518">
+                              <Label fx:id="lblGrupoCptSelecao04" alignment="TOP_RIGHT" prefHeight="17.0" prefWidth="26.0" text="0" textFill="#450518">
                                  <HBox.margin>
                                     <Insets left="20.0" />
                                  </HBox.margin>
@@ -259,7 +259,7 @@
                                     <Font name="System Bold" size="12.0" />
                                  </font>
                               </Label>
-                              <Label fx:id="lblGrupoDptSelecao01" alignment="TOP_RIGHT" contentDisplay="RIGHT" text="0 " textFill="#450518" HBox.hgrow="ALWAYS">
+                              <Label fx:id="lblGrupoDptSelecao01" alignment="TOP_RIGHT" contentDisplay="RIGHT" prefHeight="17.0" prefWidth="26.0" text="0 " textFill="#450518" HBox.hgrow="ALWAYS">
                                  <HBox.margin>
                                     <Insets left="20.0" />
                                  </HBox.margin>
@@ -285,7 +285,7 @@
                                     <Font name="System Bold" size="12.0" />
                                  </font>
                               </Label>
-                              <Label fx:id="lblGrupoDptSelecao02" text="0">
+                              <Label fx:id="lblGrupoDptSelecao02" alignment="TOP_RIGHT" prefHeight="17.0" prefWidth="26.0" text="0">
                                  <HBox.margin>
                                     <Insets left="20.0" />
                                  </HBox.margin>
@@ -305,7 +305,7 @@
                                     <Font name="System Bold" size="12.0" />
                                  </font>
                               </Label>
-                              <Label fx:id="lblGrupoDptSelecao03" text="0" textFill="#450518">
+                              <Label fx:id="lblGrupoDptSelecao03" alignment="TOP_RIGHT" prefHeight="17.0" prefWidth="26.0" text="0" textFill="#450518">
                                  <HBox.margin>
                                     <Insets left="20.0" />
                                  </HBox.margin>
@@ -325,7 +325,7 @@
                                     <Font name="System Bold" size="12.0" />
                                  </font>
                               </Label>
-                              <Label fx:id="lblGrupoDptSelecao04" text="0" textFill="#450518">
+                              <Label fx:id="lblGrupoDptSelecao04" alignment="TOP_RIGHT" prefHeight="17.0" prefWidth="25.0" text="0" textFill="#450518">
                                  <HBox.margin>
                                     <Insets left="20.0" />
                                  </HBox.margin>
@@ -361,7 +361,7 @@
                                     <Insets top="10.0" />
                                  </HBox.margin>
                               </Label>
-                              <Label fx:id="lblGrupoEptSelecao01" alignment="TOP_RIGHT" contentDisplay="RIGHT" text="0 " textFill="#450518" HBox.hgrow="ALWAYS">
+                              <Label fx:id="lblGrupoEptSelecao01" alignment="TOP_RIGHT" contentDisplay="RIGHT" maxWidth="1.7976931348623157E308" text="0 " textFill="#450518" HBox.hgrow="ALWAYS">
                                  <HBox.margin>
                                     <Insets left="20.0" top="10.0" />
                                  </HBox.margin>
@@ -387,7 +387,7 @@
                                     <Font name="System Bold" size="12.0" />
                                  </font>
                               </Label>
-                              <Label fx:id="lblGrupoEptSelecao02" text="0">
+                              <Label fx:id="lblGrupoEptSelecao02" alignment="TOP_RIGHT" maxWidth="1.7976931348623157E308" prefHeight="17.0" prefWidth="24.0" text="0">
                                  <HBox.margin>
                                     <Insets left="20.0" top="10.0" />
                                  </HBox.margin>
@@ -410,7 +410,7 @@
                                     <Insets top="10.0" />
                                  </HBox.margin>
                               </Label>
-                              <Label fx:id="lblGrupoEptSelecao03" text="0" textFill="#450518">
+                              <Label fx:id="lblGrupoEptSelecao03" alignment="TOP_RIGHT" prefHeight="17.0" prefWidth="22.0" text="0" textFill="#450518">
                                  <HBox.margin>
                                     <Insets left="20.0" top="10.0" />
                                  </HBox.margin>
@@ -433,7 +433,7 @@
                                     <Insets top="10.0" />
                                  </HBox.margin>
                               </Label>
-                              <Label fx:id="lblGrupoEptSelecao04" text="0" textFill="#450518">
+                              <Label fx:id="lblGrupoEptSelecao04" alignment="TOP_RIGHT" prefHeight="17.0" prefWidth="24.0" text="0" textFill="#450518">
                                  <HBox.margin>
                                     <Insets left="20.0" top="10.0" />
                                  </HBox.margin>
@@ -466,7 +466,7 @@
                                     <Font name="System Bold" size="12.0" />
                                  </font>
                               </Label>
-                              <Label fx:id="lblGrupoFptSelecao01" alignment="TOP_RIGHT" contentDisplay="RIGHT" text="0 " textFill="#450518" HBox.hgrow="ALWAYS">
+                              <Label fx:id="lblGrupoFptSelecao01" alignment="TOP_RIGHT" contentDisplay="RIGHT" maxWidth="1.7976931348623157E308" text="0 " textFill="#450518" HBox.hgrow="ALWAYS">
                                  <HBox.margin>
                                     <Insets left="20.0" />
                                  </HBox.margin>
@@ -492,7 +492,7 @@
                                     <Font name="System Bold" size="12.0" />
                                  </font>
                               </Label>
-                              <Label fx:id="lblGrupoFptSelecao02" text="0">
+                              <Label fx:id="lblGrupoFptSelecao02" alignment="TOP_RIGHT" prefHeight="17.0" prefWidth="24.0" text="0">
                                  <HBox.margin>
                                     <Insets left="20.0" />
                                  </HBox.margin>
@@ -512,7 +512,7 @@
                                     <Font name="System Bold" size="12.0" />
                                  </font>
                               </Label>
-                              <Label fx:id="lblGrupoFptSelecao03" text="0" textFill="#450518">
+                              <Label fx:id="lblGrupoFptSelecao03" alignment="TOP_RIGHT" prefHeight="17.0" prefWidth="23.0" text="0" textFill="#450518">
                                  <HBox.margin>
                                     <Insets left="20.0" />
                                  </HBox.margin>
@@ -532,7 +532,7 @@
                                     <Font name="System Bold" size="12.0" />
                                  </font>
                               </Label>
-                              <Label fx:id="lblGrupoFptSelecao04" text="0" textFill="#450518">
+                              <Label fx:id="lblGrupoFptSelecao04" alignment="TOP_RIGHT" prefHeight="17.0" prefWidth="22.0" text="0" textFill="#450518">
                                  <HBox.margin>
                                     <Insets left="20.0" />
                                  </HBox.margin>
@@ -565,7 +565,7 @@
                                     <Font name="System Bold" size="12.0" />
                                  </font>
                               </Label>
-                              <Label fx:id="lblGrupoGptSelecao01" alignment="TOP_RIGHT" contentDisplay="RIGHT" text="0 " textFill="#450518" HBox.hgrow="ALWAYS">
+                              <Label fx:id="lblGrupoGptSelecao01" alignment="TOP_RIGHT" contentDisplay="RIGHT" prefHeight="17.0" prefWidth="27.0" text="0 " textFill="#450518" HBox.hgrow="ALWAYS">
                                  <HBox.margin>
                                     <Insets left="20.0" />
                                  </HBox.margin>
@@ -591,7 +591,7 @@
                                     <Font name="System Bold" size="12.0" />
                                  </font>
                               </Label>
-                              <Label fx:id="lblGrupoGptSelecao02" text="0">
+                              <Label fx:id="lblGrupoGptSelecao02" alignment="TOP_RIGHT" prefHeight="17.0" prefWidth="24.0" text="0">
                                  <HBox.margin>
                                     <Insets left="20.0" />
                                  </HBox.margin>
@@ -611,7 +611,7 @@
                                     <Font name="System Bold" size="12.0" />
                                  </font>
                               </Label>
-                              <Label fx:id="lblGrupoGptSelecao03" text="0" textFill="#450518">
+                              <Label fx:id="lblGrupoGptSelecao03" alignment="TOP_RIGHT" prefHeight="17.0" prefWidth="25.0" text="0" textFill="#450518">
                                  <HBox.margin>
                                     <Insets left="20.0" />
                                  </HBox.margin>
@@ -631,7 +631,7 @@
                                     <Font name="System Bold" size="12.0" />
                                  </font>
                               </Label>
-                              <Label fx:id="lblGrupoGptSelecao04" text="0" textFill="#450518">
+                              <Label fx:id="lblGrupoGptSelecao04" alignment="TOP_RIGHT" prefHeight="17.0" prefWidth="23.0" text="0" textFill="#450518">
                                  <HBox.margin>
                                     <Insets left="20.0" />
                                  </HBox.margin>
@@ -664,7 +664,7 @@
                                     <Font name="System Bold" size="12.0" />
                                  </font>
                               </Label>
-                              <Label fx:id="lblGrupoHptSelecao01" alignment="TOP_RIGHT" contentDisplay="RIGHT" text="0 " textFill="#450518" HBox.hgrow="ALWAYS">
+                              <Label fx:id="lblGrupoHptSelecao01" alignment="TOP_RIGHT" contentDisplay="RIGHT" prefHeight="17.0" prefWidth="24.0" text="0 " textFill="#450518" HBox.hgrow="ALWAYS">
                                  <HBox.margin>
                                     <Insets left="20.0" />
                                  </HBox.margin>
@@ -690,7 +690,7 @@
                                     <Font name="System Bold" size="12.0" />
                                  </font>
                               </Label>
-                              <Label fx:id="lblGrupoHptSelecao02" text="0">
+                              <Label fx:id="lblGrupoHptSelecao02" alignment="TOP_RIGHT" prefHeight="17.0" prefWidth="21.0" text="0">
                                  <HBox.margin>
                                     <Insets left="20.0" />
                                  </HBox.margin>
@@ -710,7 +710,7 @@
                                     <Font name="System Bold" size="12.0" />
                                  </font>
                               </Label>
-                              <Label fx:id="lblGrupoHptSelecao03" text="0" textFill="#450518">
+                              <Label fx:id="lblGrupoHptSelecao03" alignment="CENTER_RIGHT" prefHeight="17.0" prefWidth="23.0" text="0" textFill="#450518">
                                  <HBox.margin>
                                     <Insets left="20.0" />
                                  </HBox.margin>
@@ -730,7 +730,7 @@
                                     <Font name="System Bold" size="12.0" />
                                  </font>
                               </Label>
-                              <Label fx:id="lblGrupoHptSelecao04" text="0" textFill="#450518">
+                              <Label fx:id="lblGrupoHptSelecao04" alignment="CENTER_RIGHT" prefHeight="17.0" prefWidth="21.0" text="0" textFill="#450518">
                                  <HBox.margin>
                                     <Insets left="20.0" />
                                  </HBox.margin>
@@ -763,7 +763,7 @@
                                     <Font name="System Bold" size="12.0" />
                                  </font>
                               </Label>
-                              <Label fx:id="lblGrupoBptSelecao01" alignment="TOP_RIGHT" contentDisplay="RIGHT" text="0 " textFill="#450518" HBox.hgrow="ALWAYS">
+                              <Label fx:id="lblGrupoBptSelecao01" alignment="TOP_RIGHT" contentDisplay="RIGHT" prefHeight="17.0" prefWidth="25.0" text="0 " textFill="#450518" HBox.hgrow="ALWAYS">
                                  <HBox.margin>
                                     <Insets left="20.0" />
                                  </HBox.margin>
@@ -789,7 +789,7 @@
                                     <Font name="System Bold" size="12.0" />
                                  </font>
                               </Label>
-                              <Label fx:id="lblGrupoBptSelecao02" text="0">
+                              <Label fx:id="lblGrupoBptSelecao02" alignment="TOP_RIGHT" prefHeight="17.0" prefWidth="24.0" text="0">
                                  <HBox.margin>
                                     <Insets left="20.0" />
                                  </HBox.margin>
@@ -809,7 +809,7 @@
                                     <Font name="System Bold" size="12.0" />
                                  </font>
                               </Label>
-                              <Label fx:id="lblGrupoBptSelecao03" text="0" textFill="#450518">
+                              <Label fx:id="lblGrupoBptSelecao03" alignment="TOP_RIGHT" prefHeight="17.0" prefWidth="21.0" text="0" textFill="#450518">
                                  <HBox.margin>
                                     <Insets left="20.0" />
                                  </HBox.margin>
@@ -829,7 +829,7 @@
                                     <Font name="System Bold" size="12.0" />
                                  </font>
                               </Label>
-                              <Label fx:id="lblGrupoBptSelecao04" text="0" textFill="#450518">
+                              <Label fx:id="lblGrupoBptSelecao04" alignment="TOP_RIGHT" prefHeight="17.0" prefWidth="21.0" text="0" textFill="#450518">
                                  <HBox.margin>
                                     <Insets left="20.0" />
                                  </HBox.margin>
@@ -867,6 +867,14 @@
                         <Insets bottom="5.0" top="10.0" />
                      </HBox.margin>
                   </Button>
+                  <Label fx:id="lblErroFaseGrupo" alignment="CENTER" textFill="RED" visible="false">
+                     <HBox.margin>
+                        <Insets left="10.0" top="15.0" />
+                     </HBox.margin>
+                     <font>
+                        <Font name="System Bold" size="12.0" />
+                     </font>
+                  </Label>
                </children>
                <VBox.margin>
                   <Insets left="5.0" />

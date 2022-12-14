@@ -18,6 +18,7 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
+import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
@@ -52,10 +53,25 @@ public class TelaMenujogadorController {
     
     @FXML
     private TableColumn<Jogador, String> nomecol;
+    
+    @FXML
+    private Button botaoEditar;
+
+    @FXML
+    private Button botaoRemove;
+    
+    @FXML
+    private Button botaoInserir;
 
     @FXML
     void initialize() {
-    	this.JogadorData = FXCollections.observableArrayList(  Main.list_jog.listar().values());      
+    	if(Main.RunFaseGrupo) {
+    		this.botaoEditar.setVisible(false);
+    		this.botaoRemove.setVisible(false);
+    		this.botaoInserir.setVisible(false);
+    		
+    	}
+    	this.JogadorData = FXCollections.observableArrayList(Main.list_jog.listar().values());      
         this.nomecol.setCellValueFactory(new PropertyValueFactory<Jogador,String>("Nome"));
         this.codcol.setCellValueFactory(new PropertyValueFactory<Jogador,Integer>("cod"));
         

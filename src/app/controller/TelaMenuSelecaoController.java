@@ -22,6 +22,7 @@ import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
+import javafx.scene.control.Button;
 
 public class TelaMenuSelecaoController {
 
@@ -47,6 +48,15 @@ public class TelaMenuSelecaoController {
     private Label lblPosicaoGrupoSelecao;
     
     private ObservableList<Selecao> SelecaoData;
+    
+    @FXML
+    private Button btnEditar;
+
+    @FXML
+    private Button btnInserir;
+
+    @FXML
+    private Button btnRemover;
     
     
     
@@ -98,6 +108,12 @@ public class TelaMenuSelecaoController {
 
     @FXML
     void initialize() throws NumSelecException {
+        if(Main.RunFaseGrupo) {
+    		this.btnEditar.setVisible(false);
+    		this.btnRemover.setVisible(false);
+    		this.btnInserir.setVisible(false);
+    		
+    	}
     	this.SelecaoData =  FXCollections.observableList(Main.list_sele.listar());
     	this.nomecol.setCellValueFactory(new PropertyValueFactory<Selecao,String>("Nome"));
     	this.TableViewSelecao.setItems(SelecaoData);

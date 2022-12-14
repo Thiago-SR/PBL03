@@ -2,6 +2,7 @@ package app.controller;
 
 import java.io.IOException;
 import java.net.URL;
+import java.util.*;
 import java.util.List;
 import java.util.ResourceBundle;
 
@@ -77,6 +78,9 @@ public class TelaFaseGrupoController {
 
     @FXML
     private TableColumn<Partida, String> columSelecao02;
+   
+    @FXML
+    private Label lblErroFaseGrupo;
 
     @FXML
     private Label lblGrupoASelecao01;
@@ -281,10 +285,40 @@ public class TelaFaseGrupoController {
     Grupo grupo06;
     Grupo grupo07;
     Grupo grupo08;
+    
+    List<Partida> jogos_oitavas;
 
     @FXML
     void ClickEncerrarFasegrupo(ActionEvent event) {
-
+    	boolean finalizadas = true;
+    	List<Partida> partidas = new ArrayList<Partida>();
+    	partidas.addAll(grupo01.getPartidas().values());
+    	partidas.addAll(grupo02.getPartidas().values());
+    	partidas.addAll(grupo03.getPartidas().values());
+    	partidas.addAll(grupo04.getPartidas().values());
+    	partidas.addAll(grupo05.getPartidas().values());
+    	partidas.addAll(grupo06.getPartidas().values());
+    	partidas.addAll(grupo07.getPartidas().values());
+    	partidas.addAll(grupo08.getPartidas().values());
+    	Partida part = null;
+    	
+    	Iterator<Partida> itr = partidas.iterator();
+    	while(itr.hasNext()) {
+    		  part = itr.next();
+    		if(!part.get_dados_completo()) {
+    			finalizadas = false;
+    			break;
+    		}
+    	}
+    	if(finalizadas) {
+	    	jogos_oitavas = Main.faseGrupo.FinalizarFaseGrupo();
+	    	this.btnEncerrarFaseGrupo.setVisible(false); 
+    	}
+    	else {
+    		
+    		this.lblErroFaseGrupo.setText(part.getSelecao01()+" x "+part.getSelecao02()+" *NAO FINALIZADA!");
+    	}
+    	
     }
 
     @FXML
@@ -389,17 +423,17 @@ public class TelaFaseGrupoController {
 			Main.RunFaseGrupo = true;
 			
 		} catch (NumSelecException e) {
-			
-			e.printStackTrace();
+			this.lblErroFaseGrupo.setText("É necessario ter 32 selecoes!");
+			this.lblErroFaseGrupo.setVisible(true);
 		} catch (NumJogException e) {
-			
-			e.printStackTrace();
+			this.lblErroFaseGrupo.setText("A selecao "+ e.get_selecao()+" pussui menos de 11 jogadores!");
+			this.lblErroFaseGrupo.setVisible(true);
 		} catch (NotTecnicoException e) {
-			System.out.println(e.get_selecao());
-			e.printStackTrace();
+			this.lblErroFaseGrupo.setText("A selecao "+ e.get_selecao()+" nao possui tecnico!");
+			this.lblErroFaseGrupo.setVisible(true);
 		} catch (SemArbitroException e) {
-			
-			e.printStackTrace();
+			this.lblErroFaseGrupo.setText("Nao ha nenhum arbitro cadastrado!");
+			this.lblErroFaseGrupo.setVisible(true);
 		}
     }
 
@@ -407,22 +441,34 @@ public class TelaFaseGrupoController {
     void btnFinalizarPartida(ActionEvent event) throws IOException {
     	Partida partida = TableViewPartidasGrupo.getSelectionModel().getSelectedItem();
     	if(partida != null) {
-    		System.out.println(partida.getSelecao01());
-    		boolean clickSalvar = ShowPegarDadosPartida(partida);
-    		if(clickSalvar) {
-    			this.TableViewPartidasGrupo.refresh();
-    		}
+    		if(!partida.get_dados_completo()) {
+	    		System.out.println(partida.getSelecao01());
+	    		boolean clickSalvar = ShowPegarDadosPartida(partida);
+	    		if(clickSalvar) {
+	    			CarregarGrupos();
+	    			this.TableViewPartidasGrupo.refresh();
+	    		}
+    	}else {
+    		this.lblErroFaseGrupo.setText("Partida finalizada!");
+    		this.lblErroFaseGrupo.setVisible(true);
+    	}
     	}
     }
 
     @FXML
     void btnVerPartida(ActionEvent event) {
-
+    	
     }
 
     @FXML
     void initialize() {
-        if(Main.RunFaseGrupo) {
+    	this.lblErroFaseGrupo.setText("*Click em um grupo para seleciona-lo!");
+    	this.lblErroFaseGrupo.setVisible(true);
+    	if(Main.RunFaseGrupo & Main.FimFaseGrupo) {
+    		this.btnEncerrarFaseGrupo.setVisible(false); 
+    		this.btnIniciarFaseGrupo.setVisible(false);
+    	}
+    	else if(Main.RunFaseGrupo) {
         	CarregarGrupos();
         	this.btnEncerrarFaseGrupo.setVisible(true);     	
         }
@@ -462,6 +508,7 @@ public class TelaFaseGrupoController {
 		this.grupo08 = Main.faseGrupo.get_grupos().get(7);
 		
 		this.lblGrupoASelecao01.setText(grupo01.getSelecoes().get(0).getNome());
+		
 		this.lblGrupoASelecao02.setText(grupo01.getSelecoes().get(1).getNome());
 		this.lblGrupoASelecao03.setText(grupo01.getSelecoes().get(2).getNome());
 		this.lblGrupoASelecao04.setText(grupo01.getSelecoes().get(3).getNome());
@@ -500,6 +547,48 @@ public class TelaFaseGrupoController {
 		this.lblGrupoHSelecao02.setText(grupo08.getSelecoes().get(1).getNome());
 		this.lblGrupoHSelecao03.setText(grupo08.getSelecoes().get(2).getNome());
 		this.lblGrupoHSelecao04.setText(grupo08.getSelecoes().get(3).getNome());
+    
+		this.lblGrupoAptSelecao01.setText(Integer.toString(grupo01.getSelecoes().get(0).getPontos()));
+		this.lblGrupoAptSelecao02.setText(Integer.toString(grupo01.getSelecoes().get(1).getPontos()));
+		this.lblGrupoAptSelecao03.setText(Integer.toString(grupo01.getSelecoes().get(2).getPontos()));
+		this.lblGrupoAptSelecao04.setText(Integer.toString(grupo01.getSelecoes().get(3).getPontos()));
+    
+    	this.lblGrupoBptSelecao01.setText(Integer.toString(grupo02.getSelecoes().get(0).getPontos()));
+    	this.lblGrupoBptSelecao02.setText(Integer.toString(grupo02.getSelecoes().get(1).getPontos()));
+    	this.lblGrupoBptSelecao03.setText(Integer.toString(grupo02.getSelecoes().get(2).getPontos()));
+    	this.lblGrupoBptSelecao04.setText(Integer.toString(grupo02.getSelecoes().get(3).getPontos()));
+    	
+    	this.lblGrupoCptSelecao01.setText(Integer.toString(grupo03.getSelecoes().get(0).getPontos()));
+    	this.lblGrupoCptSelecao02.setText(Integer.toString(grupo03.getSelecoes().get(1).getPontos()));
+    	this.lblGrupoCptSelecao03.setText(Integer.toString(grupo03.getSelecoes().get(2).getPontos()));
+    	this.lblGrupoCptSelecao04.setText(Integer.toString(grupo03.getSelecoes().get(3).getPontos()));
+    	
+    	this.lblGrupoDptSelecao01.setText(Integer.toString(grupo04.getSelecoes().get(0).getPontos()));
+    	this.lblGrupoDptSelecao02.setText(Integer.toString(grupo04.getSelecoes().get(1).getPontos()));
+    	this.lblGrupoDptSelecao03.setText(Integer.toString(grupo04.getSelecoes().get(2).getPontos()));
+    	this.lblGrupoDptSelecao04.setText(Integer.toString(grupo04.getSelecoes().get(3).getPontos()));
+    	
+    	this.lblGrupoEptSelecao01.setText(Integer.toString(grupo05.getSelecoes().get(0).getPontos()));
+    	this.lblGrupoEptSelecao02.setText(Integer.toString(grupo05.getSelecoes().get(1).getPontos()));
+    	this.lblGrupoEptSelecao03.setText(Integer.toString(grupo05.getSelecoes().get(2).getPontos()));
+    	this.lblGrupoEptSelecao04.setText(Integer.toString(grupo05.getSelecoes().get(3).getPontos()));
+    	
+    	this.lblGrupoFptSelecao01.setText(Integer.toString(grupo06.getSelecoes().get(0).getPontos()));
+    	this.lblGrupoFptSelecao02.setText(Integer.toString(grupo06.getSelecoes().get(1).getPontos()));
+    	this.lblGrupoFptSelecao03.setText(Integer.toString(grupo06.getSelecoes().get(2).getPontos()));
+    	this.lblGrupoFptSelecao04.setText(Integer.toString(grupo06.getSelecoes().get(3).getPontos()));
+    
+    	this.lblGrupoGptSelecao01.setText(Integer.toString(grupo07.getSelecoes().get(0).getPontos()));
+    	this.lblGrupoGptSelecao02.setText(Integer.toString(grupo07.getSelecoes().get(1).getPontos()));
+    	this.lblGrupoGptSelecao03.setText(Integer.toString(grupo07.getSelecoes().get(2).getPontos()));
+    	this.lblGrupoGptSelecao04.setText(Integer.toString(grupo07.getSelecoes().get(3).getPontos()));
+    	
+    	this.lblGrupoHptSelecao01.setText(Integer.toString(grupo08.getSelecoes().get(0).getPontos()));
+    	this.lblGrupoHptSelecao02.setText(Integer.toString(grupo08.getSelecoes().get(1).getPontos()));
+    	this.lblGrupoHptSelecao03.setText(Integer.toString(grupo08.getSelecoes().get(2).getPontos()));
+    	this.lblGrupoHptSelecao04.setText(Integer.toString(grupo08.getSelecoes().get(3).getPontos()));
+
     }
+    
 
 }

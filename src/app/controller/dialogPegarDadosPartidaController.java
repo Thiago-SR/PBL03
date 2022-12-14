@@ -291,7 +291,7 @@ public class dialogPegarDadosPartidaController {
 			
 			// valida se a entrada esta no formato esperado
 			data = this.Data.getText();
-			SimpleDateFormat format = new SimpleDateFormat("yyyy-mm-dd");
+			SimpleDateFormat format = new SimpleDateFormat("dd/mm/YYYY");
 			Date date = format.parse(data);
 			 
 			Arbitro arbitro = this.cbArbitro.getValue();
@@ -353,6 +353,17 @@ public class dialogPegarDadosPartidaController {
 					partida.get_dados_jog().get(jog.getCod()).setCard_amarelo(tempCartao+=cartoes);
 				}
 				partida.inserir_dados(cod_arbitro, local, data, hora, gols_time01, gols_time02);
+				partida.set_dados_completos(true);
+				if(gols_time01 > gols_time02) {
+					partida.getSelecao01().AdicionarPontos(3);
+				}
+				else if(gols_time02>gols_time01) {
+					partida.getSelecao02().AdicionarPontos(3);
+				}
+				else {
+					partida.getSelecao01().AdicionarPontos(1);
+					partida.getSelecao02().AdicionarPontos(1);
+				}
 				this.ClickSalvar = true;
 				this.stage.close();
 			}else {

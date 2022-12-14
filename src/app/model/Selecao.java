@@ -7,6 +7,7 @@ public class Selecao {
 	private String nome;
 	private Tecnico tecnico;
 	private List<Jogador> jogadores = new ArrayList<Jogador>();
+	private int pontos;
 
 	public Selecao(String nome) {
 		this.nome = nome;
@@ -38,5 +39,17 @@ public class Selecao {
 
 	public String toString() {
 		return this.nome;
+	}
+	
+	public void setPontos(int pontos) {
+		this.pontos = pontos;
+	}
+	
+	public int getPontos() {
+		return this.pontos;
+	}
+	
+	public void AdicionarPontos(int pontos) {
+		this.pontos+= pontos;
 	}
 }

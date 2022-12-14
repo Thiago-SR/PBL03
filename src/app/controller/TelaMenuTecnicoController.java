@@ -19,6 +19,7 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.GridPane;
 import javafx.stage.Stage;
+import javafx.scene.control.Button;
 
 public class TelaMenuTecnicoController {
 
@@ -39,6 +40,15 @@ public class TelaMenuTecnicoController {
 
     @FXML
     private TableColumn<Tecnico, String> selecaoTecnico;
+    
+    @FXML
+    private Button btnEditar;
+
+    @FXML
+    private Button btnInserir;
+
+    @FXML
+    private Button btnRemover;
     
     ObservableList TecnicoData;
 
@@ -85,6 +95,12 @@ public class TelaMenuTecnicoController {
 
     @FXML
     void initialize() {
+        if(Main.RunFaseGrupo) {
+    		this.btnEditar.setVisible(false);
+    		this.btnRemover.setVisible(false);
+    		this.btnInserir.setVisible(false);
+    		
+    	}
         this.TecnicoData = FXCollections.observableList(Main.list_tecnico.listar());
         this.nomeTecnico.setCellValueFactory(new PropertyValueFactory<Tecnico, String>("Nome"));
         this.codigoTecnico.setCellValueFactory(new PropertyValueFactory<Tecnico,Integer>("Cod"));

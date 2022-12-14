@@ -85,5 +85,52 @@ public class Fase_grupo {
 	public List<Grupo> get_grupos() {
 		return this.grupos;
 	}
+	
+	public List<Partida> FinalizarFaseGrupo(){
+		List<Partida> partidas_oitavas = new ArrayList<Partida>();
+		List<Selecao> Classificadas = new ArrayList<Selecao>();
+		List<Selecao> vetor;
+		Iterator<Grupo> itr = this.grupos.iterator();
+		while(itr.hasNext()) {
+			Grupo grupo = itr.next();
+			vetor  =grupo.getSelecoes();
+			 boolean troca = true;
+             Selecao aux;
+             while (troca) {
+                 troca = false;
+                 for (int i = 0; i < vetor.size() - 1; i++) {
+                     if (vetor.get(i).getPontos() > vetor.get(i+1).getPontos()) {
+                         aux = vetor.get(i);
+                         vetor.add(i, vetor.get(i+1));
+                         vetor.add(i+1, aux);
+                         troca = true;
+                     }
+                 }
+             }
+           Classificadas.add(vetor.get(3));
+           Classificadas.add(vetor.get(2));
+		}
+		
+		Partida partida01 = new Partida(Classificadas.get(1),Classificadas.get(4),500,0,null,null,null);
+		Partida partida02 = new Partida(Classificadas.get(2),Classificadas.get(3),501,0,null,null,null);
+		Partida partida03 = new Partida(Classificadas.get(5),Classificadas.get(8),502,0,null,null,null);
+		Partida partida04 = new Partida(Classificadas.get(6),Classificadas.get(7),503,0,null,null,null);;
+		Partida partida05 = new Partida(Classificadas.get(9),Classificadas.get(12),504,0,null,null,null);;
+		Partida partida06 = new Partida(Classificadas.get(10),Classificadas.get(11),505,0,null,null,null);;
+		Partida partida07 = new Partida(Classificadas.get(13),Classificadas.get(16),506,0,null,null,null);;
+		Partida partida08 = new Partida(Classificadas.get(14),Classificadas.get(15),507,0,null,null,null);;
+		
+		partidas_oitavas.add(partida01);
+		partidas_oitavas.add(partida02);
+		partidas_oitavas.add(partida03);
+		partidas_oitavas.add(partida04);
+		partidas_oitavas.add(partida05);
+		partidas_oitavas.add(partida06);
+		partidas_oitavas.add(partida07);
+		partidas_oitavas.add(partida08);
+		
+		return partidas_oitavas;
+		
+	}
 }
 

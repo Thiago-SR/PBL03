@@ -37,12 +37,12 @@
             </TableView>
             <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" style="-fx-background-color: c50d43;">
                <children>
-                  <Button mnemonicParsing="false" onAction="#btnInserir" style="-fx-background-color: transparent; -fx-border-radius: 30; -fx-border-color: white; -fx-border-width: 2;" text="Inserir" textFill="WHITE">
+                  <Button fx:id="btnInserir" mnemonicParsing="false" onAction="#btnInserir" style="-fx-background-color: transparent; -fx-border-radius: 30; -fx-border-color: white; -fx-border-width: 2;" text="Inserir" textFill="WHITE">
                      <font>
                         <Font name="System Bold" size="15.0" />
                      </font>
                   </Button>
-                  <Button mnemonicParsing="false" onAction="#btnRemover" style="-fx-background-color: transparent; -fx-border-radius: 30; -fx-border-color: white; -fx-border-width: 2;" text="Remover" textFill="WHITE">
+                  <Button fx:id="btnRemover" mnemonicParsing="false" onAction="#btnRemover" style="-fx-background-color: transparent; -fx-border-radius: 30; -fx-border-color: white; -fx-border-width: 2;" text="Remover" textFill="WHITE">
                      <font>
                         <Font name="System Bold" size="15.0" />
                      </font>
@@ -50,7 +50,7 @@
                         <Insets left="10.0" />
                      </HBox.margin>
                   </Button>
-                  <Button mnemonicParsing="false" onAction="#btnEditar" style="-fx-background-color: transparent; -fx-border-color: white; -fx-border-radius: 30; -fx-border-width: 2;" text="Editar" textFill="WHITE">
+                  <Button fx:id="btnEditar" mnemonicParsing="false" onAction="#btnEditar" style="-fx-background-color: transparent; -fx-border-color: white; -fx-border-radius: 30; -fx-border-width: 2;" text="Editar" textFill="WHITE">
                      <font>
                         <Font name="System Bold" size="15.0" />
                      </font>
