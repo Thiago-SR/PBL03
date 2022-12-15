@@ -1,0 +1,402 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<GridPane alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="669.0" prefWidth="949.0" style="-fx-background-color: #8C2BBD; -fx-border-color: #CC80F2; -fx-border-width: 7;" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/19">
+  <columnConstraints>
+    <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+  </columnConstraints>
+  <rowConstraints>
+    <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+  </rowConstraints>
+   <children>
+      <HBox alignment="CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="669.0" prefWidth="950.0" style="-fx-background-radius: 15; -fx-border-radius: 15;">
+         <children>
+            <VBox prefHeight="551.0" prefWidth="133.0">
+               <children>
+                  <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="25.0" prefWidth="126.0" text="OITAVAS" textFill="WHITE">
+                     <font>
+                        <Font name="System Bold" size="16.0" />
+                     </font>
+                     <VBox.margin>
+                        <Insets top="50.0" />
+                     </VBox.margin>
+                  </Label>
+                  <VBox fx:id="oitavasGRP1" alignment="CENTER" prefHeight="96.0" prefWidth="91.0" style="-fx-background-color: #B237F0; -fx-background-radius: 15;">
+                     <children>
+                        <Label fx:id="oitavasTIME1" alignment="CENTER" style="-fx-background-radius: #B237F0;" text="Label" textFill="WHITE">
+                           <font>
+                              <Font name="System Bold" size="16.0" />
+                           </font>
+                        </Label>
+                        <Label fx:id="oitavasTIME2" alignment="CENTER" text="Label" textFill="WHITE">
+                           <font>
+                              <Font name="System Bold" size="16.0" />
+                           </font>
+                        </Label>
+                     </children>
+                     <VBox.margin>
+                        <Insets bottom="50.0" />
+                     </VBox.margin>
+                  </VBox>
+                  <VBox fx:id="oitavasGRP2" alignment="CENTER" prefHeight="96.0" prefWidth="91.0" style="-fx-background-color: #B237F0; -fx-background-radius: 15;">
+                     <children>
+                        <Label fx:id="oitavasTIME3" alignment="CENTER" text="Label" textFill="WHITE">
+                           <font>
+                              <Font name="System Bold" size="16.0" />
+                           </font>
+                        </Label>
+                        <Label fx:id="oitavasTIME4" alignment="CENTER" text="Label" textFill="WHITE">
+                           <font>
+                              <Font name="System Bold" size="16.0" />
+                           </font>
+                        </Label>
+                     </children>
+                  </VBox>
+                  <VBox fx:id="oitavasGRP3" alignment="CENTER" prefHeight="96.0" prefWidth="91.0" style="-fx-background-color: #B237F0; -fx-background-radius: 15;">
+                     <children>
+                        <Label fx:id="oitavasTIME5" text="Label" textFill="WHITE">
+                           <font>
+                              <Font name="System Bold" size="16.0" />
+                           </font>
+                        </Label>
+                        <Label fx:id="oitavasTIME6" text="Label" textFill="WHITE">
+                           <font>
+                              <Font name="System Bold" size="16.0" />
+                           </font>
+                        </Label>
+                     </children>
+                     <VBox.margin>
+                        <Insets top="50.0" />
+                     </VBox.margin>
+                  </VBox>
+                  <VBox fx:id="oitavasGRP4" alignment="CENTER" prefHeight="96.0" prefWidth="91.0" style="-fx-background-color: #B237F0; -fx-background-radius: 15;">
+                     <children>
+                        <Label fx:id="oitavasTIME7" text="Label" textFill="WHITE">
+                           <font>
+                              <Font name="System Bold" size="16.0" />
+                           </font>
+                        </Label>
+                        <Label fx:id="oitavasTIME8" text="Label" textFill="WHITE">
+                           <font>
+                              <Font name="System Bold" size="16.0" />
+                           </font>
+                        </Label>
+                     </children>
+                     <VBox.margin>
+                        <Insets bottom="50.0" top="50.0" />
+                     </VBox.margin>
+                  </VBox>
+               </children>
+            </VBox>
+            <VBox prefHeight="551.0" prefWidth="136.0">
+               <children>
+                  <Label alignment="CENTER" prefHeight="25.0" prefWidth="129.0" text="QUARTAS" textFill="WHITE">
+                     <VBox.margin>
+                        <Insets top="110.0" />
+                     </VBox.margin>
+                     <font>
+                        <Font name="System Bold" size="16.0" />
+                     </font>
+                  </Label>
+                  <VBox fx:id="quartasGRP1" alignment="CENTER" prefHeight="96.0" prefWidth="91.0" style="-fx-background-color: #B237F0; -fx-background-radius: 15;">
+                     <children>
+                        <Label fx:id="quartasTIME1" alignment="CENTER" text="Label" textFill="WHITE">
+                           <font>
+                              <Font name="System Bold" size="16.0" />
+                           </font>
+                        </Label>
+                        <Label fx:id="quartasTIME2" text="Label" textFill="WHITE">
+                           <font>
+                              <Font name="System Bold" size="16.0" />
+                           </font>
+                           <VBox.margin>
+                              <Insets />
+                           </VBox.margin>
+                        </Label>
+                     </children>
+                     <VBox.margin>
+                        <Insets />
+                     </VBox.margin>
+                  </VBox>
+                  <VBox fx:id="quartasGRP2" alignment="CENTER" prefHeight="97.0" prefWidth="108.0" style="-fx-background-color: #B237F0; -fx-background-radius: 15;">
+                     <children>
+                        <Label fx:id="quartasTIME3" text="Label" textFill="WHITE">
+                           <font>
+                              <Font name="System Bold" size="16.0" />
+                           </font>
+                        </Label>
+                        <Label fx:id="quartasTIME4" text="Label" textFill="WHITE">
+                           <font>
+                              <Font name="System Bold" size="16.0" />
+                           </font>
+                        </Label>
+                     </children>
+                     <VBox.margin>
+                        <Insets top="200.0" />
+                     </VBox.margin>
+                  </VBox>
+               </children>
+               <HBox.margin>
+                  <Insets left="30.0" />
+               </HBox.margin>
+            </VBox>
+            <VBox prefHeight="200.0" prefWidth="100.0">
+               <children>
+                  <Label alignment="CENTER" text="SEMI FINAL" textFill="WHITE">
+                     <VBox.margin>
+                        <Insets top="250.0" />
+                     </VBox.margin>
+                     <font>
+                        <Font name="System Bold" size="16.0" />
+                     </font>
+                  </Label>
+                  <VBox fx:id="semiGRP1" alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="96.0" prefWidth="91.0" style="-fx-background-color: #B237F0; -fx-background-radius: 15;">
+                     <children>
+                        <Label fx:id="semiTIME1" text="Label" textFill="WHITE">
+                           <font>
+                              <Font name="System Bold" size="16.0" />
+                           </font>
+                           <VBox.margin>
+                              <Insets />
+                           </VBox.margin>
+                        </Label>
+                        <Label fx:id="semiTIME2" text="Label" textFill="WHITE">
+                           <font>
+                              <Font name="System Bold" size="16.0" />
+                           </font>
+                        </Label>
+                     </children>
+                     <VBox.margin>
+                        <Insets />
+                     </VBox.margin>
+                  </VBox>
+               </children>
+            </VBox>
+            <VBox prefHeight="655.0" prefWidth="206.0">
+               <HBox.margin>
+                  <Insets left="10.0" />
+               </HBox.margin>
+               <children>
+                  <Label alignment="CENTER" prefHeight="17.0" prefWidth="220.0" text="CAMPEÃO" textFill="WHITE">
+                     <VBox.margin>
+                        <Insets top="100.0" />
+                     </VBox.margin>
+                     <font>
+                        <Font size="27.0" />
+                     </font>
+                  </Label>
+                  <HBox alignment="TOP_CENTER" prefHeight="69.0" prefWidth="194.0">
+                     <VBox.margin>
+                        <Insets />
+                     </VBox.margin>
+                     <children>
+                        <Label alignment="CENTER" text="Label" textFill="WHITE">
+                           <font>
+                              <Font name="System Bold" size="16.0" />
+                           </font>
+                        </Label>
+                     </children>
+                  </HBox>
+                  <Label alignment="CENTER" prefHeight="17.0" prefWidth="200.0" text="FINAL" textFill="WHITE">
+                     <font>
+                        <Font name="System Bold" size="16.0" />
+                     </font>
+                  </Label>
+                  <HBox alignment="TOP_CENTER" prefHeight="100.0" prefWidth="200.0">
+                     <VBox.margin>
+                        <Insets top="10.0" />
+                     </VBox.margin>
+                     <children>
+                        <Label text="Label" textFill="WHITE">
+                           <font>
+                              <Font name="System Bold" size="16.0" />
+                           </font>
+                           <HBox.margin>
+                              <Insets right="10.0" />
+                           </HBox.margin>
+                        </Label>
+                        <Label text="Label" textFill="WHITE">
+                           <font>
+                              <Font name="System Bold" size="16.0" />
+                           </font>
+                           <HBox.margin>
+                              <Insets left="10.0" />
+                           </HBox.margin>
+                        </Label>
+                     </children>
+                  </HBox>
+               </children>
+            </VBox>
+            <VBox prefHeight="200.0" prefWidth="100.0">
+               <children>
+                  <Label alignment="CENTER" text="SEMI FINAL" textFill="WHITE">
+                     <font>
+                        <Font name="System Bold" size="16.0" />
+                     </font>
+                     <VBox.margin>
+                        <Insets top="250.0" />
+                     </VBox.margin>
+                  </Label>
+                  <VBox fx:id="semiGRP2" alignment="CENTER" prefHeight="96.0" prefWidth="105.0" style="-fx-background-color: #B237F0; -fx-background-radius: 15;">
+                     <children>
+                        <Label fx:id="semiTIME3" text="Label" textFill="WHITE">
+                           <font>
+                              <Font name="System Bold" size="16.0" />
+                           </font>
+                        </Label>
+                        <Label fx:id="semiTIME4" text="Label" textFill="WHITE">
+                           <font>
+                              <Font name="System Bold" size="16.0" />
+                           </font>
+                           <VBox.margin>
+                              <Insets />
+                           </VBox.margin>
+                        </Label>
+                     </children>
+                     <VBox.margin>
+                        <Insets />
+                     </VBox.margin>
+                  </VBox>
+               </children>
+               <HBox.margin>
+                  <Insets />
+               </HBox.margin>
+            </VBox>
+            <VBox prefHeight="551.0" prefWidth="136.0">
+               <children>
+                  <Label alignment="CENTER" prefHeight="25.0" prefWidth="130.0" text="QUARTAS" textFill="WHITE">
+                     <VBox.margin>
+                        <Insets top="110.0" />
+                     </VBox.margin>
+                     <font>
+                        <Font name="System Bold" size="16.0" />
+                     </font>
+                  </Label>
+                  <VBox fx:id="quartasGRP3" alignment="CENTER" prefHeight="96.0" prefWidth="91.0" style="-fx-background-color: #B237F0; -fx-background-radius: 15;">
+                     <children>
+                        <Label fx:id="quartasTIME5" text="Label" textFill="WHITE">
+                           <font>
+                              <Font name="System Bold" size="16.0" />
+                           </font>
+                        </Label>
+                        <Label fx:id="quartasTIME6" alignment="TOP_LEFT" text="Label" textFill="WHITE">
+                           <font>
+                              <Font name="System Bold" size="16.0" />
+                           </font>
+                        </Label>
+                     </children>
+                     <VBox.margin>
+                        <Insets />
+                     </VBox.margin>
+                  </VBox>
+                  <VBox fx:id="quartasGRP4" alignment="CENTER" prefHeight="96.0" prefWidth="91.0" style="-fx-background-color: #B237F0; -fx-background-radius: 15;">
+                     <children>
+                        <Label fx:id="quartasTIME7" text="Label" textFill="WHITE">
+                           <font>
+                              <Font name="System Bold" size="16.0" />
+                           </font>
+                        </Label>
+                        <Label fx:id="quartasTIME8" alignment="TOP_LEFT" text="Label" textFill="WHITE">
+                           <font>
+                              <Font name="System Bold" size="16.0" />
+                           </font>
+                        </Label>
+                     </children>
+                     <VBox.margin>
+                        <Insets top="200.0" />
+                     </VBox.margin>
+                  </VBox>
+               </children>
+               <HBox.margin>
+                  <Insets right="30.0" />
+               </HBox.margin>
+            </VBox>
+            <VBox prefHeight="551.0" prefWidth="133.0">
+               <children>
+                  <Label alignment="CENTER" prefHeight="25.0" prefWidth="125.0" text="OITAVAS" textFill="WHITE">
+                     <VBox.margin>
+                        <Insets top="50.0" />
+                     </VBox.margin>
+                     <font>
+                        <Font name="System Bold" size="16.0" />
+                     </font>
+                  </Label>
+                  <VBox fx:id="oitavasGRP5" alignment="CENTER" prefHeight="96.0" prefWidth="91.0" style="-fx-background-color: #B237F0; -fx-background-radius: 15;">
+                     <children>
+                        <Label fx:id="oitavasTIME9" text="Label" textFill="WHITE">
+                           <font>
+                              <Font name="System Bold" size="16.0" />
+                           </font>
+                        </Label>
+                        <Label fx:id="oitavasTIME10" text="Label" textFill="WHITE">
+                           <font>
+                              <Font name="System Bold" size="16.0" />
+                           </font>
+                        </Label>
+                     </children>
+                     <VBox.margin>
+                        <Insets bottom="50.0" />
+                     </VBox.margin>
+                  </VBox>
+                  <VBox fx:id="oitavasGRP6" alignment="CENTER" prefHeight="96.0" prefWidth="91.0" style="-fx-background-color: #B237F0; -fx-background-radius: 15;">
+                     <children>
+                        <Label fx:id="oitavasTIME11" text="Label" textFill="WHITE">
+                           <font>
+                              <Font name="System Bold" size="16.0" />
+                           </font>
+                        </Label>
+                        <Label fx:id="oitavasTIME12" text="Label" textFill="WHITE">
+                           <font>
+                              <Font name="System Bold" size="16.0" />
+                           </font>
+                        </Label>
+                     </children>
+                  </VBox>
+                  <VBox fx:id="oitavasGRP7" alignment="CENTER" prefHeight="96.0" prefWidth="91.0" style="-fx-background-color: #B237F0; -fx-background-radius: 15;">
+                     <children>
+                        <Label fx:id="oitavasTIME13" text="Label" textFill="WHITE">
+                           <font>
+                              <Font name="System Bold" size="16.0" />
+                           </font>
+                        </Label>
+                        <Label fx:id="oitavasTIME14" text="Label" textFill="WHITE">
+                           <font>
+                              <Font name="System Bold" size="16.0" />
+                           </font>
+                        </Label>
+                     </children>
+                     <VBox.margin>
+                        <Insets top="50.0" />
+                     </VBox.margin>
+                  </VBox>
+                  <VBox fx:id="oitavasGRP8" alignment="CENTER" prefHeight="96.0" prefWidth="91.0" style="-fx-background-color: #B237F0; -fx-background-radius: 15;">
+                     <children>
+                        <Label fx:id="oitavasTIME15" text="Label" textFill="WHITE">
+                           <font>
+                              <Font name="System Bold" size="16.0" />
+                           </font>
+                        </Label>
+                        <Label fx:id="oitavasTIME16" text="Label" textFill="WHITE">
+                           <font>
+                              <Font name="System Bold" size="16.0" />
+                           </font>
+                        </Label>
+                     </children>
+                     <VBox.margin>
+                        <Insets bottom="50.0" top="50.0" />
+                     </VBox.margin>
+                  </VBox>
+               </children>
+            </VBox>
+         </children>
+      </HBox>
+   </children>
+</GridPane>
