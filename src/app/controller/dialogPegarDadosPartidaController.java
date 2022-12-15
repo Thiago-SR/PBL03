@@ -254,6 +254,7 @@ public class dialogPegarDadosPartidaController {
 				}
 				somatorio_gol_selecao02 += gols;
 				this.jogadores_gols_selecao02.put(jog, gols);
+				this.GolsJogadorSelecao02.clear();
 			}catch(NumberFormatException e) {
 				this.lblMensagemGols.setText("A entrada deve ser numerica, tanto os gols dos jogadores quanto das selecoes!");
 			}

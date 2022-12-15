@@ -1,21 +1,21 @@
 package app.model;
 
 public class Jog_partida {
-	private int cod_jog;
+	private Jogador jog;
 	private int cod_part;
 	private int quant_gols;
 	private int card_amarelo;
 	private int card_vermelho;
 	/**
 	 * 
-	 * @param cod_jog Codigo do jogador
+	 * @param jog Codigo do jogador
 	 * @param cod_part Codigo da partida
 	 * @param quant_gols Quantidades de gols que o jogador marcou na partida
 	 * @param card_amarelo Quantidade de cartoes amarelos que o jogador recebeu na partida
 	 * @param card_vermelho Quantidade cartoes vermelhos que o jogador recebeu na partida
 	 */
-	public Jog_partida(int cod_jog, int cod_part, int quant_gols, int card_amarelo,int card_vermelho) {
-		this.cod_jog = cod_jog;
+	public Jog_partida(Jogador jog, int cod_part, int quant_gols, int card_amarelo,int card_vermelho) {
+		this.jog = jog;
 		this.cod_part = cod_part;
 		this.quant_gols = quant_gols;
 		this.card_amarelo = card_amarelo;
@@ -24,12 +24,12 @@ public class Jog_partida {
 	
 	
 
-	public int getCod_jog() {
-		return cod_jog;
+	public Jogador getJog() {
+		return this.jog;
 	}
 
-	public void setCod_jog(int cod_jog) {
-		this.cod_jog = cod_jog;
+	public void setJog(Jogador jog) {
+		this.jog = jog;
 	}
 
 	public int getCod_part() {
@@ -64,5 +64,12 @@ public class Jog_partida {
 		this.card_vermelho = card_vermelho;
 	}
 	
+	public String getNome() {
+		return this.jog.getNome();
+	}
+	
+	public String getSelecao() {
+		return this.jog.getSelecao().getNome();
+	}
 	
 }

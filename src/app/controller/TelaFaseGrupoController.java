@@ -456,7 +456,16 @@ public class TelaFaseGrupoController {
     }
 
     @FXML
-    void btnVerPartida(ActionEvent event) {
+    void btnVerPartida(ActionEvent event) throws IOException {
+    	Partida partida = TableViewPartidasGrupo.getSelectionModel().getSelectedItem();
+    	if(partida != null) {
+    		if(partida.get_dados_completo()) {
+    			ShowMostrarDados(partida);
+    		}
+    		else {
+    			this.lblErroFaseGrupo.setText("*Partida nao finalizada!");
+    		}
+    	}
     	
     }
 
@@ -490,11 +499,31 @@ public class TelaFaseGrupoController {
     	dialogPegarDadosPartidaController controller = loader.getController();
     	controller.setPartida(partida);
     	controller.setStage(dialogStage);
-    	System.out.println("Setou partida");
+ 
     	//Mostra o dialog e espera o usuario fechar
     	dialogStage.showAndWait();
     	
     	return controller.isClickSalvar();
+    }
+    
+    public void ShowMostrarDados(Partida partida) throws IOException {
+    	FXMLLoader loader = new FXMLLoader();
+    	loader.setLocation(TelaExibirPartidaController.class.getResource("/app/view/TelaExibirPartida.fxml"));
+    	GridPane page =  loader.load();
+    	
+    	//Criando estagio de dialogo
+    	Stage dialogStage = new Stage();
+    	dialogStage.setTitle("Dados da Partida");
+    	Scene scene = new Scene(page);
+    	dialogStage.setScene(scene);
+    	
+    	//Pegando o controller da tela de cadastro e setando o jogador
+    	TelaExibirPartidaController controller = loader.getController();
+    	controller.setPartida(partida);
+    	controller.setStage(dialogStage);
+    	
+    	//Mostra o dialog e espera o usuario fechar
+    	dialogStage.showAndWait();
     }
     
     public void CarregarGrupos() {

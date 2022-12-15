@@ -39,14 +39,14 @@ public class Partida {
 		Iterator<Jogador> itr = selecao01.getJogadores().iterator();
 		while(itr.hasNext()) {
 			Jogador jog = itr.next();
-			Jog_partida dados = new Jog_partida(jog.getCod(),cod,0,0,0);
+			Jog_partida dados = new Jog_partida(jog,this.cod,0,0,0);
 			this.dados_jog.put(jog.getCod(), dados);
 		}
 		
 		Iterator<Jogador> itr1 = selecao02.getJogadores().iterator();
 		while(itr1.hasNext()){
 			Jogador jog = itr1.next();
-			Jog_partida dados = new Jog_partida(jog.getCod(),cod,0,0,0);
+			Jog_partida dados = new Jog_partida(jog,this.cod,0,0,0);
 			this.dados_jog.put(jog.getCod(), dados);
 			
 		}
