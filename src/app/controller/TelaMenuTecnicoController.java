@@ -98,7 +98,9 @@ public class TelaMenuTecnicoController {
     		TableViewTecnico.refresh();
     	}
     }
+    
 
+    
     @FXML
     void initialize() {
         if(Main.RunFaseGrupo) {

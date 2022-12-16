@@ -68,7 +68,17 @@ public class TelaMenujogadorController {
 		this.botaoInserir.setVisible(false);
 		this.botaoRemove.setVisible(false);
 	}
-
+	
+    void JogadorBusca(String nome) {
+    	Jogador jog = Main.list_jog.procurar_jogador(nome);
+    	this.JogadorData = FXCollections.observableArrayList(jog);
+    	this.nomecol.setCellValueFactory(new PropertyValueFactory<Jogador, String>("Nome"));
+    	this.codcol.setCellValueFactory(new PropertyValueFactory<Jogador, Integer>("cod"));
+    	this.TableViewJogadores.setItems(JogadorData);
+		this.TableViewJogadores.getSelectionModel().selectedItemProperty()
+				.addListener((observable, oldValue, newValue) -> selecionarItemTableViewJogador(newValue));
+    }
+	
 	@FXML
 	void initialize() {
 		if (Main.RunFaseGrupo) {

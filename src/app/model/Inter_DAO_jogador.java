@@ -13,5 +13,9 @@ public interface Inter_DAO_jogador {
 	public Map<Integer, Jogador> listar();
 	
 	public Jogador buscar_jogador(int id);
+	
+	public Jogador procurar_jogador(String nome);
+
+	
 }
   
