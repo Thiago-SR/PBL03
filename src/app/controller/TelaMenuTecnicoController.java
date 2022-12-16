@@ -51,6 +51,12 @@ public class TelaMenuTecnicoController {
     private Button btnRemover;
     
     ObservableList TecnicoData;
+    
+    public void SetarVisiilidadebtn() {
+		this.btnEditar.setVisible(false);
+		this.btnInserir.setVisible(false);
+		this.btnRemover.setVisible(false);
+	}
 
     @FXML
     void btnEditar(ActionEvent event) throws IOException {

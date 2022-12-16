@@ -11,7 +11,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<BorderPane fx:id="layoutprincipal" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="520.0" prefWidth="930.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="app.controller.MainWindowController">
+<BorderPane fx:id="layoutprincipal" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="520.0" prefWidth="930.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="app.controller.MainWindowController">
    <left>
       <VBox prefHeight="427.0" prefWidth="119.0" style="-fx-background-color: #450518;" BorderPane.alignment="BOTTOM_CENTER">
          <children>
@@ -59,7 +59,7 @@
                   <Insets right="10.0" />
                </VBox.margin>
             </Button>
-            <Button fx:id="btnPesquisar" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" style="-fx-background-color: transparent;" text="Pesquisar" textFill="WHITE">
+            <Button fx:id="btnPesquisar" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#search" style="-fx-background-color: transparent;" text="Pesquisar" textFill="WHITE">
                <font>
                   <Font name="System Bold" size="14.0" />
                </font>

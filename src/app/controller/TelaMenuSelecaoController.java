@@ -50,6 +50,9 @@ public class TelaMenuSelecaoController {
     private ObservableList<Selecao> SelecaoData;
     
     @FXML
+    private Button VerEquipe;
+    
+    @FXML
     private Button btnEditar;
 
     @FXML
@@ -59,7 +62,20 @@ public class TelaMenuSelecaoController {
     private Button btnRemover;
     
     
-    
+    public void SetarVisibilidadebtn() {
+    	this.btnEditar.setVisible(false);
+    	this.btnInserir.setVisible(false);
+    	this.btnRemover.setVisible(false);
+    	this.VerEquipe.setVisible(false);
+    	
+    }
+    public void SetarTabela(List<Selecao> selecoes) {
+    	this.SelecaoData =  FXCollections.observableList(selecoes);
+    	this.nomecol.setCellValueFactory(new PropertyValueFactory<Selecao,String>("Nome"));
+    	this.TableViewSelecao.setItems(SelecaoData);
+    	 this.TableViewSelecao.getSelectionModel().selectedItemProperty().addListener((observable,oldValue,newValue)-> SelecionarItemTableViewSelecao(newValue));
+    	
+    }
 
 
     @FXML

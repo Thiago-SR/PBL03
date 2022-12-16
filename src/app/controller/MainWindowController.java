@@ -100,7 +100,7 @@ public class MainWindowController {
     
     @FXML
     void search(ActionEvent event) throws IOException {
-        GridPane f = FXMLLoader.load(getClass().getResource("/app/view/TelaMenuPesquisar.fxml"));
+        BorderPane f = FXMLLoader.load(getClass().getResource("/app/view/TelaPesquisar.fxml"));
     	layoutprincipal.setCenter(f);
     }
 

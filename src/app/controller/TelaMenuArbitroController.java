@@ -17,90 +17,101 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
+import javafx.scene.control.Label;
 
 public class TelaMenuArbitroController {
 
 	@FXML
-    private TableView<Arbitro> TableViewArbitro;
-	 
-	 
+	private TableView<Arbitro> TableViewArbitro;
+
 	@FXML
-    private TableColumn<Arbitro, String> NomeCol;
-    
-    @FXML
-    private TableColumn<Arbitro, Integer> CodigoCol;
-	 
-    @FXML
-    private ResourceBundle resources;
+	private TableColumn<Arbitro, String> NomeCol;
+
+	@FXML
+	private TableColumn<Arbitro, Integer> CodigoCol;
+
+	@FXML
+	private ResourceBundle resources;
+
+	@FXML
+	private URL location;
+	
+	@FXML
+    private Label btnEditar;
 
     @FXML
-    private URL location;
-    
-    
-   
-
-    
-    ObservableList<Arbitro> ArbitroData;
+    private Label btnInserir;
 
     @FXML
-    void lblEditar(MouseEvent event) throws IOException {
-    	Arbitro arbitro = TableViewArbitro.getSelectionModel().getSelectedItem();
-    	if(arbitro != null) {
-	    	String nome = arbitro.getNome();
-	    	boolean clickconfirmar= showTelaCadastro(arbitro);
-	    	if(clickconfirmar) {
-	    		Main.list_arbitro.editar(nome, arbitro.getNome());
-	    		TableViewArbitro.refresh();
-	    	}
-    	}
-    }
+    private Label btnRemove;
 
-    @FXML
-    void lblInserir(MouseEvent event) throws IOException {
-    	Arbitro arbitro = new Arbitro(null,0);
-    	boolean clickconfirmar= showTelaCadastro(arbitro);
-    	if(clickconfirmar) {
-    		this.ArbitroData.add(arbitro);
-    		this.TableViewArbitro.refresh();
-    	}
-    }
+	public void SetarVisiilidadebtn() {
+		this.btnEditar.setVisible(false);
+		this.btnInserir.setVisible(false);
+		this.btnRemove.setVisible(false);
+	}
 
-    @FXML
-    void lblRemover(MouseEvent event) {
-    	Arbitro arbitro = TableViewArbitro.getSelectionModel().getSelectedItem();
-    	if(arbitro != null) {
-    		Main.list_arbitro.remover(arbitro.getNome());
-    		TableViewArbitro.refresh();
-    	}
-    }
+	ObservableList<Arbitro> ArbitroData;
 
-    @FXML
-    void initialize() {
-    	this.ArbitroData = FXCollections.observableList(Main.list_arbitro.listar());
-    	this.CodigoCol.setCellValueFactory(new PropertyValueFactory<Arbitro,Integer>("Codigo"));
-    	this.NomeCol.setCellValueFactory(new PropertyValueFactory<Arbitro,String>("Nome"));
-    	this.TableViewArbitro.setItems(ArbitroData);
-    }
-    
-    public boolean showTelaCadastro(Arbitro arbitro) throws IOException {
-    	FXMLLoader loader = new FXMLLoader();
-    	loader.setLocation(dialogCadastroArbitroController.class.getResource("/app/view/dialogCadastroArbitro.fxml"));
-    	AnchorPane page = (AnchorPane) loader.load();
-    	//Criando estagio de dialogo
-    	Stage dialogStage = new Stage();
-    	dialogStage.setTitle("Cadastro de arbitro");
-    	Scene scene = new Scene(page);
-    	dialogStage.setScene(scene);
-    	
-    	//Pegando o controller da tela de cadastro e setando o jogador
-    	dialogCadastroArbitroController controller = loader.getController();
-    	controller.setStage(dialogStage);
-    	controller.setArbitro(arbitro);
-    	
-    	//Mostra o dialog e espera o usuario fechar
-    	dialogStage.showAndWait();
-    	
-    	return controller.isClickConfirmar();
-    }
+	@FXML
+	void lblEditar(MouseEvent event) throws IOException {
+		Arbitro arbitro = TableViewArbitro.getSelectionModel().getSelectedItem();
+		if (arbitro != null) {
+			String nome = arbitro.getNome();
+			boolean clickconfirmar = showTelaCadastro(arbitro);
+			if (clickconfirmar) {
+				Main.list_arbitro.editar(nome, arbitro.getNome());
+				TableViewArbitro.refresh();
+			}
+		}
+	}
+
+	@FXML
+	void lblInserir(MouseEvent event) throws IOException {
+		Arbitro arbitro = new Arbitro(null, 0);
+		boolean clickconfirmar = showTelaCadastro(arbitro);
+		if (clickconfirmar) {
+			this.ArbitroData.add(arbitro);
+			this.TableViewArbitro.refresh();
+		}
+	}
+
+	@FXML
+	void lblRemover(MouseEvent event) {
+		Arbitro arbitro = TableViewArbitro.getSelectionModel().getSelectedItem();
+		if (arbitro != null) {
+			Main.list_arbitro.remover(arbitro.getNome());
+			TableViewArbitro.refresh();
+		}
+	}
+
+	@FXML
+	void initialize() {
+		this.ArbitroData = FXCollections.observableList(Main.list_arbitro.listar());
+		this.CodigoCol.setCellValueFactory(new PropertyValueFactory<Arbitro, Integer>("Codigo"));
+		this.NomeCol.setCellValueFactory(new PropertyValueFactory<Arbitro, String>("Nome"));
+		this.TableViewArbitro.setItems(ArbitroData);
+	}
+
+	public boolean showTelaCadastro(Arbitro arbitro) throws IOException {
+		FXMLLoader loader = new FXMLLoader();
+		loader.setLocation(dialogCadastroArbitroController.class.getResource("/app/view/dialogCadastroArbitro.fxml"));
+		AnchorPane page = (AnchorPane) loader.load();
+		// Criando estagio de dialogo
+		Stage dialogStage = new Stage();
+		dialogStage.setTitle("Cadastro de arbitro");
+		Scene scene = new Scene(page);
+		dialogStage.setScene(scene);
+
+		// Pegando o controller da tela de cadastro e setando o jogador
+		dialogCadastroArbitroController controller = loader.getController();
+		controller.setStage(dialogStage);
+		controller.setArbitro(arbitro);
+
+		// Mostra o dialog e espera o usuario fechar
+		dialogStage.showAndWait();
+
+		return controller.isClickConfirmar();
+	}
 
 }
