@@ -11,9 +11,9 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<BorderPane fx:id="layoutprincipal" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="520.0" prefWidth="930.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="app.controller.MainWindowController">
+<BorderPane fx:id="layoutprincipal" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="724.0" prefWidth="1304.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="app.controller.MainWindowController">
    <left>
-      <VBox prefHeight="427.0" prefWidth="119.0" style="-fx-background-color: #450518;" BorderPane.alignment="BOTTOM_CENTER">
+      <VBox prefHeight="664.0" prefWidth="128.0" style="-fx-background-color: #450518;" BorderPane.alignment="BOTTOM_CENTER">
          <children>
             <Button maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#menu_selecao" style="-fx-background-color: transparent;" text="Menu Seleção" textFill="WHITE">
                <font>
@@ -81,17 +81,6 @@
                   <Insets right="10.0" />
                </VBox.margin>
             </Button>
-            <Button fx:id="btnPartidas" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#menu_partidas" style="-fx-background-color: transparent;" text="Partidas" textFill="WHITE">
-               <padding>
-                  <Insets bottom="10.0" top="10.0" />
-               </padding>
-               <font>
-                  <Font name="System Bold" size="14.0" />
-               </font>
-               <VBox.margin>
-                  <Insets right="10.0" />
-               </VBox.margin>
-            </Button>
             <Button fx:id="btnEliminatorias" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#menu_eliminatorias" style="-fx-background-color: transparent;" text="Eliminatórias" textFill="WHITE">
                <font>
                   <Font name="System Bold" size="14.0" />
@@ -103,7 +92,7 @@
                   <Insets right="10.0" />
                </VBox.margin>
             </Button>
-            <Button fx:id="btnPreencher" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" style="-fx-background-color: transparent;" text="Auto Preencher" textFill="WHITE">
+            <Button fx:id="btnPreencher" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#auto_preencher" style="-fx-background-color: transparent;" text="Auto Preencher" textFill="WHITE">
                <padding>
                   <Insets bottom="10.0" top="10.0" />
                </padding>
@@ -121,12 +110,12 @@
       </VBox>
    </left>
    <center>
-      <ImageView fitHeight="460.0" fitWidth="825.0" pickOnBounds="true" preserveRatio="true" BorderPane.alignment="CENTER">
+      <ImageView fitHeight="664.0" fitWidth="1193.0" pickOnBounds="true" preserveRatio="true" BorderPane.alignment="CENTER">
          <image>
             <Image url="@imagem/Mundial-Qatar-2022-donde-ver-los-partidos-de-futbol-en-internet.jpg" />
          </image>
          <BorderPane.margin>
-            <Insets right="7.0" />
+            <Insets left="5.0" />
          </BorderPane.margin>
       </ImageView>
    </center>

@@ -1,7 +1,7 @@
 package app.model;
 
 import app.*;
-import application.model.Jogador;
+import app.model.Jogador;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -16,7 +16,6 @@ import java.util.Map;
 public class DAO_jogador implements Inter_DAO_jogador {
 	private Map<Integer, Jogador> jogadores = new HashMap<>();
 	
-	private List<Jogador> Jogadores = new ArrayList<Jogador>();
 
 	public DAO_jogador() {
 	}

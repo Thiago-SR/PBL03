@@ -7,7 +7,7 @@ import app.model.DAO_jogador;
 import app.model.DAO_selecao;
 import app.model.DAO_tecnico;
 import app.model.Fase_grupo;
-import app.model.Preencher;
+
 import app.model.DAO_arbitro;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
@@ -28,10 +28,8 @@ public class Main extends Application {
 	public static boolean FimFaseGrupo = false;
 	@Override
 	public void start(Stage primaryStage) throws Exception {
-		Preencher p = new Preencher();
-		p.MockSelecoes(list_sele);
-		p.MockTecnicos(list_sele);
-		p.MockJogadores(list_sele);
+		
+		
 		
 		FXMLLoader loader = new FXMLLoader();
 		URL xmlURL = getClass().getResource("view/MainWindow.fxml");

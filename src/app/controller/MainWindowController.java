@@ -7,10 +7,13 @@ import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.image.ImageView;
+import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.GridPane;
+import javafx.stage.Stage;
 
 public class MainWindowController {
 
@@ -104,6 +107,27 @@ public class MainWindowController {
     	layoutprincipal.setCenter(f);
     }
 
+    
+    @FXML
+    void auto_preencher(ActionEvent event) throws IOException {
+    	FXMLLoader loader = new FXMLLoader();
+		loader.setLocation(AutoPreencherController.class.getResource("/app/view/TelaAutoPreencher.fxml"));
+		BorderPane page = loader.load();
+		// Criando estagio de dialogo
+		Stage dialogStage = new Stage();
+		Scene scene = new Scene(page);
+		dialogStage.setScene(scene);
+		
+		AutoPreencherController controller = loader.getController();
+    	controller.setStage(dialogStage);
+
+		// Mostra o dialog e espera o usuario fechar
+		dialogStage.showAndWait();
+
+		//return controller.isClickconfirmar();
+    	
+    	//layoutprincipal.setCenter(g);
+    }
     @FXML
     void initialize() {
        

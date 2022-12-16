@@ -73,7 +73,7 @@ public class dialogCadastroJogador {
 
 	@FXML
     void btncancelar(ActionEvent event) {
-
+		this.stage.close();
     }
 
     @FXML

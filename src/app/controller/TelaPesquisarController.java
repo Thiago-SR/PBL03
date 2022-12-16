@@ -2,18 +2,26 @@ package app.controller;
 
 import java.io.IOException;
 import java.net.URL;
+import java.text.SimpleDateFormat;
 import java.util.*;
-import java.util.ResourceBundle;
 
 import app.Main;
+import app.Exceptions.NotTecnicoException;
+import app.Exceptions.NumJogException;
+import app.Exceptions.NumSelecException;
+import app.Exceptions.SemArbitroException;
 import app.model.Categorias;
 import app.model.Selecao;
+import app.model.Fase_grupo;
+import app.model.Grupo;
+import app.model.Partida;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import app.model.Jogador;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.Scene;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
@@ -22,6 +30,7 @@ import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.GridPane;
+import javafx.stage.Stage;
 
 public class TelaPesquisarController {
 
@@ -59,8 +68,12 @@ public class TelaPesquisarController {
 	private TableColumn<Jogador, Integer> codJogador;
 
 	private ObservableList<Jogador> JogadorData;
+	
+	List<Grupo> grupos =  new ArrayList<Grupo>();
 
 	List<Categorias> categorias = new ArrayList<Categorias>();
+	
+	static Fase_grupo fasegrp;
 
 	@FXML
 	void btnBuscar(ActionEvent event) throws IOException {
@@ -72,8 +85,6 @@ public class TelaPesquisarController {
 				TelaMenujogadorController controller = loader.getController();
 				controller.SetarVisiilidadebtn();
 				Jogador jog = Main.list_jog.procurar_jogador(tfBuscar.getText());
-				System.out.println(tfBuscar.getText());
-				System.out.println(jog.getNome() + "aaaaaaa");
 				controller.JogadorBusca(jog.getNome());
 				this.layoutPrincipal.setCenter(a);
 			}
@@ -119,12 +130,50 @@ public class TelaPesquisarController {
 			}
 
 			if (this.cbCategorias.getValue().getNome().equals("Partida") == true) {
-
+				String data = null;
+				try {
+					data = tfBuscar.getText();
+					SimpleDateFormat formato = new SimpleDateFormat("dd/MM/yyyy");
+					Date date = formato.parse(data);
+				} catch (java.text.ParseException e) {
+					lblErro.setVisible(true);
+					lblErro.setText("Data invalida!!!");	
+				}
+				List<Grupo> grupos = Main.faseGrupo.get_grupos();
+				Iterator<Grupo> itr = grupos.iterator();
+				while(itr.hasNext()) {
+					Grupo grupo = itr.next();
+					Map<Integer, Partida> partidas = grupo.getPartidas();
+					for (Map.Entry<Integer, Partida> pair : partidas.entrySet()) {
+						if(pair.getValue().getData() != null) {
+							if(pair.getValue().getData().equals(data)==true) {
+								FXMLLoader loader = new FXMLLoader();
+						    	loader.setLocation(TelaExibirPartidaController.class.getResource("/app/view/TelaExibirPartida.fxml"));
+						    	GridPane page =  loader.load();
+						    	
+						    	
+						    	//Criando estagio de dialogo
+						    	Stage dialogStage = new Stage();
+						    	dialogStage.setTitle("Dados da Partida");
+						    	Scene scene = new Scene(page);
+						    	dialogStage.setScene(scene);
+						    	
+						    	//Pegando o controller da tela de cadastro e setando o jogador
+						    	TelaExibirPartidaController controller = loader.getController();
+						    	controller.setPartida(pair.getValue());
+						    	controller.setStage(dialogStage);
+						    	
+						    	//Mostra o dialog e espera o usuario fechar
+						    	this.layoutPrincipal.setCenter(page);
+						    	//dialogStage.showAndWait();
+							}
+						}	
+					}
+				}
 			}
 		}
-
 	}
-
+	
 	@FXML
 	void initialize() {
 		this.layoutPrincipal.getChildren().get(2).setVisible(false);
