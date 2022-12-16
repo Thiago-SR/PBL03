@@ -455,6 +455,7 @@ public class TelaFaseGrupoController {
     	}
     }
 
+    
     @FXML
     void btnVerPartida(ActionEvent event) throws IOException {
     	Partida partida = TableViewPartidasGrupo.getSelectionModel().getSelectedItem();
@@ -466,7 +467,6 @@ public class TelaFaseGrupoController {
     			this.lblErroFaseGrupo.setText("*Partida nao finalizada!");
     		}
     	}
-    	
     }
 
     @FXML

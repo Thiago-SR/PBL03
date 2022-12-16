@@ -93,9 +93,15 @@ public class MainWindowController {
     }
     
     @FXML
-    void search(ActionEvent event) {
-        //GridPane E = FXMLLoader.load(getClass().getResource("/app/view/TelaMenuTecnico.fxml"));
-    	//layoutprincipal.setCenter(E);
+    void menu_eliminatorias(ActionEvent event) throws IOException {
+    	GridPane e = FXMLLoader.load(getClass().getResource("/app/view/TelaMenuEliminatorias.fxml"));
+    	layoutprincipal.setCenter(e);
+    }
+    
+    @FXML
+    void search(ActionEvent event) throws IOException {
+        GridPane f = FXMLLoader.load(getClass().getResource("/app/view/TelaMenuPesquisar.fxml"));
+    	layoutprincipal.setCenter(f);
     }
 
     @FXML

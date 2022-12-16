@@ -163,9 +163,11 @@ public class dialogPegarDadosPartidaController {
 				if(this.cbCardColorSelecao01.getValue() != null) {
 					if(this.cbCardColorSelecao01.getValue().getTipo().equals("Amarelo")==true){
 						this.jogadores_cartoesAmarelo_selecao01.put(jog,Integer.parseInt(this.CadJogadorSelecao01.getText()));
+						this.jogadores_cartoesAmarelo_selecao01.clear();
 					}
 					else{
 						this.jogadores_cartoesVermelho_selecao01.put(jog,Integer.parseInt(this.CadJogadorSelecao01.getText()));
+						this.jogadores_cartoesVermelho_selecao02.clear();
 					}
 				}
 				else {
@@ -191,9 +193,11 @@ public class dialogPegarDadosPartidaController {
 				if(this.cbCardColorSelecao02.getValue() != null) {
 					if(this.cbCardColorSelecao02.getValue().getTipo().equals("Amarelo")==true){
 						this.jogadores_cartoesAmarelo_selecao02.put(jog,Integer.parseInt(this.CadJogadorSelecao02.getText()));
+						this.jogadores_cartoesAmarelo_selecao02.clear();
 					}
 					else{
 						this.jogadores_cartoesVermelho_selecao02.put(jog,Integer.parseInt(this.CadJogadorSelecao02.getText()));
+						this.jogadores_cartoesVermelho_selecao02.clear();
 					}
 				}else {
 					this.lblMensagemCartoes.setText("*Selecione a cor do cartao!");
